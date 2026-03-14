@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./Ubuntu-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+:root {
+  --color-green-bright: #59b900; /* ярко-зелёный */
+  --color-green-light: #a4cb00; /* светло-зелёный */
+  --color-green-dark: #005f00; /* тёмно-зелёный */
+  --color-green-deep: #004c2b; /* глубокий зелёный */
+  --color-red: #ff002b; /* красный */
+  --color-gray: #606060; /* серый */
+  --color-white: #fff;
+
+  /* Дополнительные цвета */
+  --color-teal: #00c496; /* бирюзовый */
+  --color-yellow: #ffad00; /* жёлтый */
+  --color-orange: #ff5426; /* оранжевый */
+  --color-black: #000000; /* Чёрный */
+
+  --body-color: #e9e9e9;
+  --color-main-page: #e9e9e9;
+  --elements-bg-color: #005f00;
+  --on-element-hover-color: #005f00;
+  --title-color: #e9e9e9;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  background-color: var(--body-color);
+}
+
+a {
+  font-family: "Ubuntu", sans-serif;
+  text-decoration: none;
+  color: #d3d2d2;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: #ffffff;
+}

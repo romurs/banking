@@ -1,0 +1,23 @@
+<script setup lang="ts"></script>
+
+<template>
+  <span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <!-- Icon from IconaMoon by Dariush Habibpour - https://creativecommons.org/licenses/by/4.0/ -->
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linejoin="round"
+        stroke-width="3.75"
+        d="M12.01 12v.01H12V12zm7 0v.01H19V12zm-14 0v.01H5V12z"
+      />
+    </svg>
+  </span>
+</template>
+
+<style scoped lang="scss"></style>
