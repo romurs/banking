@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// накопления
 </script>
 
 <template>

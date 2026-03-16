@@ -1,24 +1,24 @@
 <script setup lang="ts"></script>
 
 <template>
-  <span>
+  <slot>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
     >
-      <!-- Icon from Iconoir by Luca Burgio - https://github.com/iconoir-icons/iconoir/blob/main/LICENSE -->
+      <!-- Icon from IconaMoon by Dariush Habibpour - https://creativecommons.org/licenses/by/4.0/ -->
       <path
         fill="none"
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="1.5"
-        d="M22 9v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2zm0 0H6"
+        stroke-width="2.5"
+        d="M12 5v14m7-7l-7-7l-7 7"
       />
     </svg>
-  </span>
+  </slot>
 </template>
 
 <style scoped lang="scss"></style>

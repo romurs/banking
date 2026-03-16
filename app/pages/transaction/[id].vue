@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// кредиты
 </script>
 
 <template>

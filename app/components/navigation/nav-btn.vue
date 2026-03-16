@@ -15,9 +15,8 @@ const props = defineProps<{
 </template>
 
 <style scoped lang="scss">
-
-.nav-link{
-  &.router-link-exact-active{
+.nav-link {
+  &.router-link-exact-active {
     color: #148f2b;
     font-weight: bold;
     font-size: larger;

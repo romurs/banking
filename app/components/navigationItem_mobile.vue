@@ -24,14 +24,12 @@ import SavingsIcon from "./navigation/savingsIcon.vue";
 </template>
 
 <style scoped lang="scss">
-
-nav{
+nav {
   visibility: hidden;
   display: none;
 }
 
-@media (max-width: 1200px){
-
+@media (max-width: 1200px) {
   nav {
     width: 100%;
     min-height: 4rem;

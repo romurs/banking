@@ -1,18 +1,25 @@
 <script setup lang="ts">
+import HistoryHead from "~/components/main/history/HistoryHead.vue";
 import AccountsList from "~/components/main/wallet/accounts/accountsList.vue";
-import Head from "~/components/main/wallet/accounts/head.vue";
+import AccountHead from "~/components/main/wallet/accounts/AccountHead.vue";
+import HistoryList from "~/components/main/history/HistoryList.vue";
 
 useHead({
   title: "Сбербанк Онлайн",
   meta: [{ name: "mainpage", content: "Управление считами онлайн" }],
 });
-
 </script>
 
 <template>
-  <div class="wallet">
-    <Head />
-    <AccountsList />
+  <div>
+    <div class="wallet">
+      <AccountHead />
+      <AccountsList />
+    </div>
+    <div class="history">
+      <HistoryHead />
+      <HistoryList />
+    </div>
   </div>
 </template>
 
@@ -32,12 +39,19 @@ useHead({
   }
 }
 
-@media(max-width:480px){
-  .wallet{
+.history {
+  border-radius: 20px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+@media (max-width: 480px) {
+  .wallet {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding: 1rem;
   }
 }
-
 </style>

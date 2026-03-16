@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// тут наверное сайт с авторизацией
 </script>
 
 <template>

@@ -3,17 +3,15 @@ import EyeEmptyIcon from "~/components/main/wallet/eyeEmptyIcon.vue";
 import EyeOffIcon from "~/components/main/wallet/eyeOffIcon.vue";
 import KebabHorizontal from "~/components/main/wallet/kebabHorizontalIcon.vue";
 
-
 const financeStore = useFinanceStore();
 
 const headBtnTitle = computed(() =>
   financeStore.showFinance ? "Показать финансы" : "Скрыть финансы",
 );
-
 </script>
 
 <template>
-  <div class="head">
+  <div class="account-head">
     <h1>Кошелёк</h1>
     <div class="head-btns">
       <button
@@ -37,7 +35,7 @@ const headBtnTitle = computed(() =>
 </template>
 
 <style scoped lang="scss">
-.head {
+.account-head {
   display: flex;
   justify-content: space-between;
   height: 48px;
