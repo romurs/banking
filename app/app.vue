@@ -25,32 +25,32 @@ main {
   width: 100%;
   max-width: 720px;
 }
-.aside{
+.aside {
   display: flex;
   flex: 1 1 0;
 }
 
-@media(max-width:1200){
-  .aside{width: 0;}
+@media (max-width: 1200) {
+  .aside {
+    width: 0;
+  }
 }
 
-.aside-left{
+.aside-left {
   flex-direction: column;
 }
 
-.aside-right{
-
+.aside-right {
 }
 
 .container {
   padding-top: 16px;
   width: 100%;
-  height: 700px;
   background-color: #fff;
 }
 
-@media(max-width: 480px){
-  .container{
+@media (max-width: 480px) {
+  .container {
     padding-top: 0;
   }
 }
