@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import CreditCardIcon from "./creditCardIcon.vue";
+import PlusCircle from "./plusCircle.vue";
 
-const props = defineProps<{
-  lastFourNumber: string;
+interface Props {
+  lastFourNumber?: string;
   cardMoney: string;
   accountData: string;
-}>();
+  accountType?: string;
+}
 
+const props = withDefaults(defineProps<Props>(), {
+  accountType: "default",
+});
 // title="Платёжный счёт 1104. Баланс 13 800,78. руб.. Привязана 1 карта."
 
 const formattedMoney = computed(() => {
@@ -22,13 +27,27 @@ const financeStore = useFinanceStore();
 </script>
 
 <template>
-  <a class="account" :title="title" :aria-label="title" href="">
+  <NuxtLink
+    class="account"
+    :title="title"
+    :aria-label="title"
+    :to="
+      props.accountType === 'new'
+        ? '/new-account'
+        : `/account/${props.accountData}`
+    "
+  >
     <div class="account-container">
       <div class="account-head">
-        <CreditCardIcon />
+        <CreditCardIcon v-if="props.accountType == 'default'" />
+        <PlusCircle
+          v-else-if="props.accountType == 'new'"
+          class="new-card-icon"
+        />
         <p class="last-four-number-card">{{ lastFourNumber }}</p>
       </div>
-      <div class="card-date">
+
+      <div v-if="props.accountType == `default`" class="card-date">
         <div class="money-data">
           <p v-if="financeStore.showFinance" class="hiden-money">*******</p>
           <p v-else class="money">{{ formattedMoney }}</p>
@@ -39,8 +58,17 @@ const financeStore = useFinanceStore();
           <p class="account-data">{{ accountData }}</p>
         </div>
       </div>
+
+      <div v-if="props.accountType == `new`" class="card-date">
+        <div class="money-data">
+          <p class="money">{{ formattedMoney }}</p>
+        </div>
+        <div class="account-data">
+          <p class="account-data">{{ accountData }}</p>
+        </div>
+      </div>
     </div>
-  </a>
+  </NuxtLink>
 </template>
 
 <style scoped lang="scss">
@@ -52,6 +80,7 @@ const financeStore = useFinanceStore();
   margin-right: 0.8rem;
   flex-shrink: 0;
   padding: 1rem;
+  cursor: pointer;
 }
 .account-container {
   height: 100%;

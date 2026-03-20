@@ -1,10 +1,20 @@
 <script setup lang="ts">
+// import NavigationItem from "./components/navigation/nav-btn.vue";
 import NavigationItem_mobile from "./components/navigationItem_mobile.vue";
 import "./assets/main.scss";
+
+const route = useRoute();
+
+// На странице авторизации скрываем навигацию и заголовок
+const isAuthPage = computed(() => route.path === "/" || route.path === "/signup");
 </script>
 
 <template>
-  <div class="wrapper">
+  <div v-if="isAuthPage" class="auth-wrapper">
+    <!-- На странице авторизации показываем только контент -->
+    <NuxtPage />
+  </div>
+  <div v-else class="wrapper">
     <aside class="aside aside-left">
       <NavigationItem />
     </aside>
@@ -20,6 +30,15 @@ import "./assets/main.scss";
 </template>
 
 <style scoped lang="scss">
+.auth-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #148f2b 0%, #7de590 100%);
+}
+
 main {
   // flex: 1 0 auto;
   width: 100%;

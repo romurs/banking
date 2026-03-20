@@ -1,9 +1,27 @@
 <script setup lang="ts">
 import HistoryItem from "./HistoryItem.vue";
+
+// Используем composable для получения транзакций
+const { transactions, loading, error } = useTransactions();
 </script>
 
 <template>
-  <div class="history_list">
+  <div v-if="loading" class="history_list">
+    <p>Загрузка истории...</p>
+  </div>
+  <div v-else-if="error" class="history_list">
+    <p class="error">Ошибка: {{ error }}</p>
+  </div>
+  <div v-else class="history_list">
+    <HistoryItem
+      v-for="transaction in transactions"
+      :key="transaction.id"
+      :ammount="transaction.amount.toString()"
+      :type="transaction.type"
+      :date="transaction.date"
+      :from="transaction.counterparty"
+      :transaction="transaction.id.toString()"
+    />
     <HistoryItem
       ammount="169.98"
       type="Оплата товаров и услуг"
@@ -32,5 +50,11 @@ import HistoryItem from "./HistoryItem.vue";
 .history_list {
   display: flex;
   flex-direction: column;
+}
+
+.error {
+  color: #d32f2f;
+  font-weight: 500;
+  padding: 1rem;
 }
 </style>

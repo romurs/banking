@@ -8,6 +8,9 @@ const canScrollLeft = ref(false);
 const canScrollRight = ref(false);
 const hasOverflow = ref(false);
 
+// Используем composable для получения счетов
+const { accounts, loading, error } = useAccounts();
+
 const updateScrollState = () => {
   const el = scrollContainer.value;
   if (!el) return;
@@ -41,7 +44,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="accounts">
+  <div v-if="loading" class="accounts">
+    <p>Загрузка счетов...</p>
+  </div>
+  <div v-else-if="error" class="accounts">
+    <p class="error">Ошибка: {{ error }}</p>
+  </div>
+  <div v-else class="accounts">
     <div
       class="shadow shadow-left"
       :class="{ visible: hasOverflow && canScrollLeft }"
@@ -52,29 +61,17 @@ onBeforeUnmount(() => {
     />
     <div ref="scrollContainer" class="accounts-list">
       <AccountItem
-        last-four-number="1234"
-        card-money="1234.56"
-        account-data="5678"
+        v-for="account in accounts"
+        :key="account.id"
+        :last-four-number="account.cardLastFour"
+        :card-money="account.balance.toString()"
+        :account-data="account.accountNumber"
       />
+
       <AccountItem
-        last-four-number="5678"
-        card-money="7891.01"
-        account-data="4367"
-      />
-      <AccountItem
-        last-four-number="4238"
-        card-money="3437346.12"
-        account-data="3765"
-      />
-      <AccountItem
-        last-four-number="2983"
-        card-money="0.01"
-        account-data="3654"
-      />
-      <AccountItem
-        last-four-number="2983"
-        card-money="0.01"
-        account-data="3654"
+        account-type="new"
+        card-money="Оформить"
+        account-data="новый счёт"
       />
     </div>
     <button
@@ -98,6 +95,16 @@ onBeforeUnmount(() => {
 .accounts {
   margin-top: 1rem;
   position: relative;
+  padding: 1rem;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  color: #d32f2f;
+  font-weight: 500;
 }
 
 .shadow {
@@ -129,6 +136,7 @@ onBeforeUnmount(() => {
   display: flex;
   overflow-x: auto;
   scrollbar-width: none;
+  width: 100%;
 }
 
 @media (max-width: 480px) {

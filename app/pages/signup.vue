@@ -7,6 +7,8 @@ const email = ref("");
 const password = ref("");
 const loading = ref(false);
 const error = ref("");
+const firstname = ref("");
+const lastname = ref("");
 
 const handleLogin = async () => {
   loading.value = true;
@@ -59,21 +61,45 @@ const handleLogin = async () => {
           />
         </div>
 
+        <div class="form-group">
+          <label for="lastname" class="form-label">Фамилия</label>
+          <input
+            id="lastname"
+            v-model="lastname"
+            type="text"
+            class="form-input"
+            placeholder="Иванов"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="firstname" class="form-label">Имя</label>
+          <input
+            id="firstname"
+            v-model="firstname"
+            type="text"
+            class="form-input"
+            placeholder="Иван"
+            required
+          />
+        </div>
+
         <div v-if="error" class="error-message">
           {{ error }}
         </div>
 
         <FormButton
-          :text="loading ? 'Загрузка...' : 'Войти'"
+          :text="loading ? 'Загрузка...' : 'Зарегистрироваться'"
           btype="default"
           type="submit"
         />
 
         <FormButton
-          text="Зарегестрироваться"
+          text="Войти по логину"
           btype="inverse"
           :disabled="loading"
-          @click="navigateTo('/signup')"
+          @click="navigateTo('/')"
         />
       </form>
 
@@ -139,7 +165,7 @@ const handleLogin = async () => {
 
   &:focus {
     outline: none;
-    border-color: #148f2b;
+    border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 
@@ -161,7 +187,6 @@ const handleLogin = async () => {
   padding: 12px;
   background: linear-gradient(135deg, #148f2b 0%, #7de590 100%);
   color: white;
-
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -182,6 +207,37 @@ const handleLogin = async () => {
   }
 }
 
+.signup-button {
+  padding: 12px;
+  background: white;
+  color: #148f2b;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.signup-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .auth-footer {
   margin-top: 20px;
   text-align: center;
@@ -194,7 +250,7 @@ const handleLogin = async () => {
 }
 
 .auth-link {
-  color: #148f2b;
+  color: #667eea;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;

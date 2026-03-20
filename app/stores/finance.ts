@@ -1,5 +1,5 @@
 // stores/finance.ts
-import { defineStore } from 'pinia'; // Keep this if not using autoImports, or remove if autoImports works
+import { defineStore } from 'pinia';
 
 export const useFinanceStore = defineStore('finance', {
   state: () => ({ showFinance: false }),

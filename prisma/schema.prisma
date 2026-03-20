@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// Пользователь
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  accounts     Account[]
+  transactions Transaction[]
+
+  @@map("users")
+}
+
+// Счет/Карта
+model Account {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  accountNumber String   @unique
+  cardLastFour  String   @db.VarChar(4)
+  balance       Decimal  @default(0) @db.Decimal(15, 2)
+  currency      String   @default("RUB")
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions   Transaction[]
+
+  @@map("accounts")
+}
+
+// Операция/Транзакция
+model Transaction {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  accountId   Int
+  amount      Decimal  @db.Decimal(15, 2)
+  type        String   // "payment", "transfer", "income"
+  counterparty String  // От кого / кому
+  description String?  @db.Text
+  date        DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  account Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+
+  @@map("transactions")
+}
