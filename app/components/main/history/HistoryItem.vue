@@ -2,6 +2,7 @@
 import ArrowUp from "./ArrowUp.vue";
 import ArrowDown from "./ArrowDown.vue";
 import ShoppingCardFill from "./ShoppingCardFill.vue";
+import { useFinanceStore } from "~/stores/finance";
 
 const props = defineProps<{
   type: "Оплата товаров и услуг" | "Перевод" | "Прочие поступления";
@@ -30,7 +31,7 @@ const financeStore = useFinanceStore();
 </script>
 
 <template>
-  <NuxtLink :to="`/transaction/${props.transaction}`">
+  <NuxtLink :to="`transaction/${props.transaction}`">
     <div class="history_item">
       <div class="history_item_icon">
         <div v-if="props.type == 'Оплата товаров и услуг'">

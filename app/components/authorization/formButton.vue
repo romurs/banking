@@ -1,12 +1,22 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   btype: "default" | "inverse";
+  disabled?: boolean;
   text: string;
-}>();
+  type?: "button" | "submit" | "reset";
+}>(), {
+  disabled: false,
+  type: "button",
+});
 </script>
 
 <template>
-  <button type="submit" class="form-button" :class="props.btype === 'inverse' ? 'form-button-inverse' : ''">
+  <button
+    :type="props.type"
+    :disabled="props.disabled"
+    class="form-button"
+    :class="props.btype === 'inverse' ? 'form-button-inverse' : ''"
+  >
     {{ props.text }}
   </button>
 </template>
@@ -16,7 +26,6 @@ const props = defineProps<{
   padding: 12px;
   background: linear-gradient(135deg, #148f2b 0%, #7de590 100%);
   color: white;
-  
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -37,7 +46,7 @@ const props = defineProps<{
   }
 }
 
-.form-button-inverse{
+.form-button-inverse {
   background: white;
   color: #148f2b;
 }

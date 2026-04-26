@@ -1,30 +1,45 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import FormButton from "~/components/authorization/formButton.vue";
+import { useAuthStore } from "~/stores/auth";
+import { APP_HOME_PATH, resolveAppRedirect } from "~/utils/auth-redirect";
+
+const authStore = useAuthStore();
+const route = useRoute();
 
 const email = ref("");
 const password = ref("");
 const loading = ref(false);
 const error = ref("");
-const firstname = ref("");
-const lastname = ref("");
+const firstName = ref("");
+const lastName = ref("");
+const redirectTarget = computed(() => resolveAppRedirect(route.query.redirect));
 
-const handleLogin = async () => {
+const navigateToLogin = async () => {
+  await navigateTo({
+    path: "/",
+    query: redirectTarget.value
+      ? { redirect: redirectTarget.value }
+      : undefined,
+  });
+};
+
+const handleRegister = async () => {
   loading.value = true;
   error.value = "";
 
   try {
-    // TODO: Реализовать авторизацию через API
-    // const response = await $fetch("/api/auth/login", {
-    //   method: "POST",
-    //   body: { email: email.value, password: password.value },
-    // });
+    await authStore.register({
+      email: email.value,
+      firstName: firstName.value,
+      lastName: lastName.value,
+      password: password.value,
+    });
 
-    // Для сейчас просто перенаправляем на главную страницу
-    await navigateTo("/main");
+    await navigateTo(redirectTarget.value ?? APP_HOME_PATH);
   } catch (err: any) {
-    error.value = err.message || "Ошибка при входе";
+    error.value = err.data?.message ?? err.message ?? "Ошибка регистрации";
   } finally {
     loading.value = false;
   }
@@ -32,11 +47,11 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div class="auth-container">
+  <div class="auth-card-shell">
     <div class="auth-card">
       <h1 class="auth-title">Сбербанк Онлайн</h1>
 
-      <form class="auth-form" @submit.prevent="handleLogin">
+      <form class="auth-form" @submit.prevent="handleRegister">
         <div class="form-group">
           <label for="email" class="form-label">Email</label>
           <input
@@ -62,10 +77,10 @@ const handleLogin = async () => {
         </div>
 
         <div class="form-group">
-          <label for="lastname" class="form-label">Фамилия</label>
+          <label for="lastName" class="form-label">Фамилия</label>
           <input
-            id="lastname"
-            v-model="lastname"
+            id="lastName"
+            v-model="lastName"
             type="text"
             class="form-input"
             placeholder="Иванов"
@@ -74,10 +89,10 @@ const handleLogin = async () => {
         </div>
 
         <div class="form-group">
-          <label for="firstname" class="form-label">Имя</label>
+          <label for="firstName" class="form-label">Имя</label>
           <input
-            id="firstname"
-            v-model="firstname"
+            id="firstName"
+            v-model="firstName"
             type="text"
             class="form-input"
             placeholder="Иван"
@@ -93,13 +108,14 @@ const handleLogin = async () => {
           :text="loading ? 'Загрузка...' : 'Зарегистрироваться'"
           btype="default"
           type="submit"
+          :disabled="loading"
         />
 
         <FormButton
           text="Войти по логину"
           btype="inverse"
           :disabled="loading"
-          @click="navigateTo('/')"
+          @click="navigateToLogin"
         />
       </form>
 
@@ -112,13 +128,12 @@ const handleLogin = async () => {
 </template>
 
 <style scoped lang="scss">
-.auth-container {
+.auth-card-shell {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  // padding: 20px;
 }
 
 .auth-card {
@@ -165,8 +180,8 @@ const handleLogin = async () => {
 
   &:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #148f2b;
+    box-shadow: 0 0 0 3px rgba(20, 143, 43, 0.14);
   }
 
   &::placeholder {
@@ -183,61 +198,6 @@ const handleLogin = async () => {
   text-align: center;
 }
 
-.auth-button {
-  padding: 12px;
-  background: linear-gradient(135deg, #148f2b 0%, #7de590 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
-.signup-button {
-  padding: 12px;
-  background: white;
-  color: #148f2b;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  width: 100%;
-  cursor: pointer;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
-
-.signup-link {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
 .auth-footer {
   margin-top: 20px;
   text-align: center;
@@ -250,13 +210,13 @@ const handleLogin = async () => {
 }
 
 .auth-link {
-  color: #667eea;
+  color: #148f2b;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 
   &:hover {
-    color: #764ba2;
+    color: #0f7021;
     text-decoration: underline;
   }
 }

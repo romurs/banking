@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const useTransactions = () => {
   const transactions = ref<any[]>([]);
   const loading = ref(false);

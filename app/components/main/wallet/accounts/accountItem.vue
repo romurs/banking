@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CreditCardIcon from "./creditCardIcon.vue";
 import PlusCircle from "./plusCircle.vue";
+import { useFinanceStore } from "~/stores/finance";
 
 interface Props {
   lastFourNumber?: string;
@@ -19,7 +20,9 @@ const formattedMoney = computed(() => {
   if (isNaN(num)) return props.cardMoney; // Если не число, возвращаем как есть
   return num.toLocaleString("ru-RU"); // Форматируем с пробелами для тысяч (русский локаль)
 });
-
+const lastfFourNumberOfAccount = computed(() => {
+  return props.accountData.slice(-4);
+});
 const title = computed(
   () => `Платёжный счёт ${props.accountData}. Баланс ${formattedMoney.value}.`,
 );
@@ -33,8 +36,8 @@ const financeStore = useFinanceStore();
     :aria-label="title"
     :to="
       props.accountType === 'new'
-        ? '/new-account'
-        : `/account/${props.accountData}`
+        ? 'new-account'
+        : `account/${props.accountData}`
     "
   >
     <div class="account-container">
@@ -55,7 +58,7 @@ const financeStore = useFinanceStore();
         </div>
         <div class="account-data">
           <p>Счёт **</p>
-          <p class="account-data">{{ accountData }}</p>
+          <p class="account-data">{{ lastfFourNumberOfAccount }}</p>
         </div>
       </div>
 

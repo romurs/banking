@@ -8,16 +8,16 @@ import SavingsIcon from "./navigation/savingsIcon.vue";
 
 <template>
   <nav class="navigation">
-    <NavBtn value="Главная" link="/main">
+    <NavBtn value="Главная" link="/app/main">
       <template #icon><HomeIcon /></template>
     </NavBtn>
-    <NavBtn value="Накопления" link="/savings">
+    <NavBtn value="Накопления" link="/app/savings">
       <template #icon><SavingsIcon /></template>
     </NavBtn>
-    <NavBtn value="Платежи" link="/payments">
+    <NavBtn value="Платежи" link="/app/payments">
       <template #icon><PaymentsIcon /></template>
     </NavBtn>
-    <NavBtn value="Кредиты" link="/loans">
+    <NavBtn value="Кредиты" link="/app/loans">
       <template #icon><LoansIcon /></template>
     </NavBtn>
   </nav>

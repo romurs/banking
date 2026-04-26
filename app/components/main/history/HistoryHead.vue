@@ -4,7 +4,7 @@
   <div class="history-head">
     <h2 class="history-title">История</h2>
     <button class="all_history_btn">
-      <NuxtLink to="/operations">Все</NuxtLink>
+      <NuxtLink to="operations">Все</NuxtLink>
     </button>
   </div>
 </template>

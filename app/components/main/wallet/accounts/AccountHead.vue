@@ -2,6 +2,7 @@
 import EyeEmptyIcon from "~/components/main/wallet/eyeEmptyIcon.vue";
 import EyeOffIcon from "~/components/main/wallet/eyeOffIcon.vue";
 import KebabHorizontal from "~/components/main/wallet/kebabHorizontalIcon.vue";
+import { useFinanceStore } from "~/stores/finance";
 
 const financeStore = useFinanceStore();
 

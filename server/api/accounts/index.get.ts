@@ -2,7 +2,7 @@ import { prisma } from "../../utils/db";
 
 export default defineEventHandler(async () => {
   try {
-    const userId = 1; // TODO: получить из JWT токена
+    const userId = 1;
 
     const accounts = await prisma.account.findMany({
       where: { userId },

@@ -3,6 +3,7 @@ import HistoryHead from "~/components/main/history/HistoryHead.vue";
 import AccountsList from "~/components/main/wallet/accounts/accountsList.vue";
 import AccountHead from "~/components/main/wallet/accounts/AccountHead.vue";
 import HistoryList from "~/components/main/history/HistoryList.vue";
+import ProfileAside from "~/components/main/profileAside.vue";
 
 useHead({
   title: "Сбербанк Онлайн",
@@ -12,6 +13,7 @@ useHead({
 
 <template>
   <div>
+    <ProfileAside />
     <div class="wallet">
       <AccountHead />
       <AccountsList />

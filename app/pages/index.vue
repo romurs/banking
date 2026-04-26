@@ -1,28 +1,42 @@
+<!-- eslint-disable vue/html-self-closing -->
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import FormButton from "~/components/authorization/formButton.vue";
+import { useAuthStore } from "~/stores/auth";
+import { APP_HOME_PATH, resolveAppRedirect } from "~/utils/auth-redirect";
+
+const authStore = useAuthStore();
+const route = useRoute();
 
 const email = ref("");
 const password = ref("");
 const loading = ref(false);
 const error = ref("");
+const redirectTarget = computed(() => resolveAppRedirect(route.query.redirect));
+
+const navigateToRegister = async () => {
+  await navigateTo({
+    path: "/register",
+    query: redirectTarget.value
+      ? { redirect: redirectTarget.value }
+      : undefined,
+  });
+};
 
 const handleLogin = async () => {
   loading.value = true;
   error.value = "";
 
   try {
-    // TODO: Реализовать авторизацию через API
-    // const response = await $fetch("/api/auth/login", {
-    //   method: "POST",
-    //   body: { email: email.value, password: password.value },
-    // });
+    await authStore.login({
+      email: email.value,
+      password: password.value,
+    });
 
-    // Для сейчас просто перенаправляем на главную страницу
-    await navigateTo("/main");
+    await navigateTo(redirectTarget.value ?? APP_HOME_PATH);
   } catch (err: any) {
-    error.value = err.message || "Ошибка при входе";
+    error.value = err.data?.message ?? err.message ?? "Ошибка входа";
   } finally {
     loading.value = false;
   }
@@ -30,9 +44,9 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <div class="auth-container">
-    <div class="auth-card">
-      <h1 class="auth-title">Сбербанк Онлайн</h1>
+  <div class="auth_container">
+    <div class="auth_card">
+      <h1 class="auth_title">Сбербанк Онлайн</h1>
 
       <form class="auth-form" @submit.prevent="handleLogin">
         <div class="form-group">
@@ -64,16 +78,17 @@ const handleLogin = async () => {
         </div>
 
         <FormButton
-          :text="loading ? 'Загрузка...' : 'Войти'"
+          :text="loading ? 'Вход...' : 'Войти'"
           btype="default"
           type="submit"
+          :disabled="loading"
         />
 
         <FormButton
-          text="Зарегестрироваться"
+          text="Зарегистрироваться"
           btype="inverse"
           :disabled="loading"
-          @click="navigateTo('/signup')"
+          @click="navigateToRegister"
         />
       </form>
 
@@ -86,16 +101,15 @@ const handleLogin = async () => {
 </template>
 
 <style scoped lang="scss">
-.auth-container {
+.auth_container {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  // padding: 20px;
 }
 
-.auth-card {
+.auth_card {
   background: white;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -104,7 +118,7 @@ const handleLogin = async () => {
   max-width: 400px;
 }
 
-.auth-title {
+.auth_title {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 30px;
@@ -140,7 +154,7 @@ const handleLogin = async () => {
   &:focus {
     outline: none;
     border-color: #148f2b;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(20, 143, 43, 0.14);
   }
 
   &::placeholder {
@@ -155,31 +169,6 @@ const handleLogin = async () => {
   background-color: rgba(211, 47, 47, 0.1);
   border-radius: 8px;
   text-align: center;
-}
-
-.auth-button {
-  padding: 12px;
-  background: linear-gradient(135deg, #148f2b 0%, #7de590 100%);
-  color: white;
-
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-
-  &:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
 }
 
 .auth-footer {
@@ -200,17 +189,17 @@ const handleLogin = async () => {
   transition: color 0.3s;
 
   &:hover {
-    color: #764ba2;
+    color: #0f7021;
     text-decoration: underline;
   }
 }
 
 @media (max-width: 480px) {
-  .auth-card {
+  .auth_card {
     padding: 30px 20px;
   }
 
-  .auth-title {
+  .auth_title {
     font-size: 24px;
     margin-bottom: 25px;
   }
