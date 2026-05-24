@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NavigationItem from "~/components/navigationItem.vue";
-import ProfileAside from "~/components/main/profileAside.vue";
-import ProfileMobile from "~/components/main/ProfileMobile.vue";
+// import ProfileAside from "~/components/main/profileAside.vue";
+// import ProfileMobile from "~/components/main/ProfileMobile.vue";
 </script>
 
 <template>
@@ -11,14 +11,14 @@ import ProfileMobile from "~/components/main/ProfileMobile.vue";
     </aside>
     <main>
       <div class="header">
-        <ProfileMobile />
+        <!-- <ProfileMobile /> -->
       </div>
       <div class="container">
         <slot />
       </div>
     </main>
     <aside class="aside aside-right">
-      <ProfileAside />
+      <!-- <ProfileAside /> -->
     </aside>
     <NavigationItem_mobile />
   </div>

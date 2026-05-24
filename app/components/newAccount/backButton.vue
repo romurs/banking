@@ -25,9 +25,11 @@ const goBack = () => {
 
 <style scoped lang="scss">
 .goBack {
+  
   justify-content: space-between;
   width: 100%;
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .goBack_btn {

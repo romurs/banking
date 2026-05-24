@@ -28,6 +28,7 @@ export default defineEventHandler(async (event) => {
         counterparty: true,
         description: true,
         date: true,
+        accountId: true,
       },
       orderBy: {
         date: "desc",
@@ -50,6 +51,7 @@ export default defineEventHandler(async (event) => {
         counterparty: trans.counterparty,
         description: trans.description,
         date: new Date(trans.date).toLocaleDateString("ru-RU"),
+        accountId: trans.accountId,
       };
     });
   } catch (error) {

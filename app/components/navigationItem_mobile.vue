@@ -17,7 +17,7 @@ import SavingsIcon from "./navigation/savingsIcon.vue";
     <NavBtn value="Платежи" link="/app/payments">
       <template #icon><PaymentsIcon /></template>
     </NavBtn>
-    <NavBtn value="Кредиты" link="/app/loans">
+    <NavBtn value="Профиль" link="/app/loans">
       <template #icon><LoansIcon /></template>
     </NavBtn>
   </nav>
@@ -45,6 +45,12 @@ nav {
     align-self: flex-start;
 
     visibility: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+  font-size: 0.85rem;
   }
 }
 </style>
