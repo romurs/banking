@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavigationItem from "~/components/navigationItem.vue";
 import ProfileAside from "~/components/main/profileAside.vue";
+import ProfileMobile from "~/components/main/ProfileMobile.vue";
 </script>
 
 <template>
@@ -9,7 +10,9 @@ import ProfileAside from "~/components/main/profileAside.vue";
       <NavigationItem />
     </aside>
     <main>
-      <div class="header"></div>
+      <div class="header">
+        <ProfileMobile />
+      </div>
       <div class="container">
         <slot />
       </div>
@@ -48,15 +51,23 @@ main {
 }
 
 .container {
-  min-height: 100dvh;
   padding-top: 16px;
   width: 100%;
-  background-color: #fff;
+  background-color: none;
+  padding-bottom: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-bottom: 5rem;
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 480px) {
   .container {
     padding-top: 0;
+    padding-bottom: 5rem;
   }
 }
 

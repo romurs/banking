@@ -1,8 +1,23 @@
+import { getCookie, deleteCookie } from "h3";
 import { prisma } from "../../utils/db";
+import { verifyToken } from "../../utils/jwt";
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
   try {
-    const userId = 1; // TODO: получить из JWT токена
+    const token = getCookie(event, "auth_token");
+
+    if (!token) {
+      throw createError({ statusCode: 401, message: "Not authenticated" });
+    }
+
+    const payload = verifyToken(token);
+
+    if (!payload?.userId || typeof payload.userId !== "number") {
+      deleteCookie(event, "auth_token");
+      throw createError({ statusCode: 401, message: "Not authenticated" });
+    }
+
+    const userId = payload.userId;
 
     const transactions = await prisma.transaction.findMany({
       where: { userId },

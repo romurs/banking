@@ -4,7 +4,7 @@
   <div class="history-head">
     <h2 class="history-title">История</h2>
     <button class="all_history_btn">
-      <NuxtLink to="operations">Все</NuxtLink>
+      <NuxtLink to="/app/operations">Все</NuxtLink>
     </button>
   </div>
 </template>
@@ -15,6 +15,7 @@
   height: 48px;
   align-items: center;
   justify-content: space-between;
+  padding: 0.85rem 1.5rem;
 }
 
 .all_history_btn {
@@ -24,6 +25,7 @@
   font-weight: 500;
   font-size: medium;
   transition: 0.15s ease;
+  cursor: pointer;
 }
 
 .all_history_btn:hover {

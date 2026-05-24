@@ -53,8 +53,16 @@ const headBtnTitle = computed(() =>
   border-radius: 12px;
   background-color: rgba(38, 38, 38, 0.08);
   border: none;
-  padding: 0.8rem;
   align-items: center;
   cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .head-btn {
+    margin-right: 0.3rem;
+  }
+  h1{
+    font-size: 1.5rem;
+  }
 }
 </style>

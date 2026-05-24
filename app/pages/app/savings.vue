@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="js">
 // накопления
 </script>
 
@@ -6,5 +6,4 @@
   <div></div>
 </template>
 
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

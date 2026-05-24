@@ -1,0 +1,173 @@
+<script setup lang="ts">
+const creditLimit = ref(300000);
+
+const formattedLimit = computed(() => {
+  return creditLimit.value.toLocaleString("ru-RU") + " ₽";
+});
+
+const presets = [50000, 100000, 150000, 200000, 300000, 500000, 750000, 950000];
+
+const selectPreset = (value: number) => {
+  creditLimit.value = value;
+};
+
+const handleInput = (e: Event) => {
+  const target = e.target as HTMLInputElement;
+  let num = parseInt(target.value.replace(/\D/g, "")) || 0;
+
+  // Ограничиваем минимум и максимум
+  if (num < 50000) num = 50000;
+  if (num > 1000000) num = 1000000;
+
+  creditLimit.value = num;
+};
+</script>
+
+<template>
+  <div class="limit-section">
+    <div class="limit-header">
+      <span class="limit-title">Кредитный лимит</span>
+      <input
+        v-model="formattedLimit"
+        type="text"
+        class="limit-value-input"
+        @blur="handleInput"
+        @keypress.enter="handleInput"
+      />
+    </div>
+
+    <div class="limit-presets">
+      <button
+        v-for="value in presets"
+        :key="value"
+        @click="selectPreset(value)"
+        :class="{ active: creditLimit === value }"
+        class="preset-btn"
+      >
+        {{ (value / 1000).toFixed(0) }} тыс.
+      </button>
+    </div>
+
+    <input
+      type="range"
+      v-model="creditLimit"
+      min="50000"
+      max="1000000"
+      step="1000"
+      class="limit-slider"
+    />
+
+    <div class="limit-marks">
+      <span>50 000 ₽</span>
+      <span>1 000 000 ₽</span>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.limit-section {
+  margin: 2rem 0 2.5rem;
+}
+
+.limit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+
+  .limit-title {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .limit-value-input {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #148f2b;
+    background: transparent;
+    border: none;
+    text-align: right;
+    width: 180px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      background: #f8fff9;
+      box-shadow: 0 0 0 3px rgba(20, 143, 43, 0.15);
+    }
+  }
+}
+
+.limit-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.1rem;
+  justify-content: flex-start;
+  max-width: 350px;
+}
+
+.preset-btn {
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  border: 2px solid #e5e5e5;
+  background: white;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: #148f2b;
+    color: #148f2b;
+  }
+
+  &.active {
+    background: #148f2b;
+    color: white;
+    border-color: #148f2b;
+  }
+}
+
+.limit-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  background: #e5e5e5;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #148f2b;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(20, 143, 43, 0.3);
+    cursor: pointer;
+    border: 3px solid white;
+  }
+
+  &::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #148f2b;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(20, 143, 43, 0.3);
+    cursor: pointer;
+    border: 3px solid white;
+  }
+}
+
+.limit-marks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+</style>

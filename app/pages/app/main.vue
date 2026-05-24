@@ -3,7 +3,6 @@ import HistoryHead from "~/components/main/history/HistoryHead.vue";
 import AccountsList from "~/components/main/wallet/accounts/accountsList.vue";
 import AccountHead from "~/components/main/wallet/accounts/AccountHead.vue";
 import HistoryList from "~/components/main/history/HistoryList.vue";
-import ProfileAside from "~/components/main/profileAside.vue";
 
 useHead({
   title: "Сбербанк Онлайн",
@@ -13,12 +12,11 @@ useHead({
 
 <template>
   <div>
-    <ProfileAside />
-    <div class="wallet">
+    <div class="wallet widjet">
       <AccountHead />
       <AccountsList />
     </div>
-    <div class="history">
+    <div class="history widjet">
       <HistoryHead />
       <HistoryList />
     </div>
@@ -26,6 +24,9 @@ useHead({
 </template>
 
 <style scoped lang="scss">
+.widjet{
+  margin-bottom: 1rem;
+}
 .wallet {
   background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
   border-radius: 20px;
@@ -43,10 +44,11 @@ useHead({
 
 .history {
   border-radius: 20px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  // padding-left: 1.5rem;
+  // padding-right: 1.5rem;
+  // padding-bottom: 1rem;
+  // padding-top: 1rem;
+  background-color: #fff;
 }
 
 @media (max-width: 480px) {
@@ -54,6 +56,8 @@ useHead({
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding: 1rem;
+    padding-right: 0.6rem;
+    padding-left: 0.6rem;
   }
 }
 </style>

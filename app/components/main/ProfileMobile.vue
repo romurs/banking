@@ -19,7 +19,7 @@ const logoutUser = async () => {
         <span class="profile_icon">
           <img src="~/assets/defaultProfileIcon.svg" alt="" />
         </span>
-        <p class="fullname">{{ user?.lastName || "" }}</p>
+        <p class="fullname">{{ user?.lastName + " " + user?.firstName || "" }}</p>
       </NuxtLink>
     </div>
     <button class="scaffold logout_btn" title="" @click="logoutUser">
@@ -29,26 +29,31 @@ const logoutUser = async () => {
 </template>
 
 <style scoped lang="scss">
-@media (max-width: 1200px) {
-  .user_block {
-    display: none;
-    visibility: hidden;
-  }
-}
-
 @media (min-width: 1200px) {
   .user_block {
-    display: flex;
-    margin-top: 2rem;
-    margin-right: 2rem;
-  }
-}
-
-@media (max-width: 1400px) {
-  .fullname {
     display: none;
     visibility: hidden;
   }
+}
+
+@media (max-width: 1200px) {
+  .user_block {
+    display: flex;
+    margin-top: 0.6rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+// @media (max-width: 1400px) {
+//   .fullname {
+//     display: none;
+//     visibility: hidden;
+//   }
+// }
+
+.fullname {
+  white-space: nowrap;
 }
 
 .scaffold {
@@ -57,6 +62,7 @@ const logoutUser = async () => {
   justify-content: center;
   max-height: 3rem;
   border-radius: 12px;
+  margin: 0.6rem;
 }
 
 .profile_icon {
@@ -88,5 +94,6 @@ const logoutUser = async () => {
   padding: 0;
   margin-left: 16px;
   rotate: 90deg;
+  
 }
 </style>

@@ -3,6 +3,11 @@ import HistoryItem from "./HistoryItem.vue";
 
 // Используем composable для получения транзакций
 const { transactions, loading, error } = useTransactions();
+
+// Показываем только последние 3 транзакции
+const lastThreeTransactions = computed(() => {
+  return transactions.value.slice(0, 3);
+});
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const { transactions, loading, error } = useTransactions();
   </div>
   <div v-else class="history_list">
     <HistoryItem
-      v-for="transaction in transactions"
+      v-for="transaction in lastThreeTransactions"
       :key="transaction.id"
       :ammount="transaction.amount.toString()"
       :type="transaction.type"

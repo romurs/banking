@@ -5,12 +5,17 @@ import ShoppingCardFill from "./ShoppingCardFill.vue";
 import { useFinanceStore } from "~/stores/finance";
 
 const props = defineProps<{
-  type: "Оплата товаров и услуг" | "Перевод" | "Прочие поступления";
+  type: "Оплата товаров и услуг" | "Перевод" | "Прочие поступления" | string;
   ammount: string;
-  date: string;
+  date?: string;
   from: string;
   transaction?: string;
 }>();
+
+const formattedDate = computed(() => {
+  return props.date ? formatOperationDate(props.date) : "";
+});
+
 
 const formattedMoney = computed(() => {
   const num = parseFloat(props.ammount);
@@ -42,15 +47,15 @@ const financeStore = useFinanceStore();
       </div>
       <div class="history_data">
         <div class="history_info">
-          <div class="history_payname">{{ props.from }}</div>
+          <p class="history_payname">{{ props.from }}</p>
           <p v-if="financeStore.showFinance" class="hiden-money">*******</p>
           <p v-else class="history_ammount" :style="{ color: amountColor }">
             {{ amountSign }}{{ formattedMoney }} ₽
           </p>
         </div>
         <div class="history_discription">
-          <div class="history_date">{{ props.date }}</div>
-          <div class="history_type">{{ props.type }}</div>
+          <p v-if="props.date" class="history_date" >{{ formattedDate }}</p>
+          <p class="history_type">{{ props.type }}</p>
         </div>
       </div>
     </div>
@@ -59,11 +64,13 @@ const financeStore = useFinanceStore();
 
 <style scoped lang="scss">
 .history_item {
+  box-sizing: border-box;
   display: flex;
   width: 100%;
-  min-height: 69px;
   align-items: center;
   cursor: pointer;
+  padding: 0.85rem 1.5rem;
+  align-items: flex-start;
 
   transition: opacity 0.15s ease;
 }
@@ -75,26 +82,70 @@ const financeStore = useFinanceStore();
 .history_payname {
   font-weight: 700;
   font-size: large;
+  text-align: right;
+}
+
+.history_ammount {
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .history_info {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .history_discription {
-  color: #0000008c currentColor;
+  opacity: 0.5;
   display: flex;
   gap: 1rem;
   font-size: smaller;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .history_data {
   width: 100%;
+  min-width: 0;
 }
 
 .history_item_icon {
   margin-right: 1rem;
   align-items: center;
+}
+
+@media (max-width: 480px) {
+  .history_payname {
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .history_discription {
+  }
+  .history_ammount {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+  .hiden-money {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .history_discription {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .history_item {
+    min-height: 60px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+@media (max-width: 1200px) {
 }
 </style>

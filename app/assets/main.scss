@@ -46,13 +46,20 @@
   font-weight: 700;
   font-style: italic;
 }
+html{
+  scrollbar-gutter: stable;     /* Основное решение */
+  overflow-y: scroll;
+}
+body{
+  overflow-y: visible;
+}
 
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #f1f1f1;
 
   display: block;
   font-family: "Ubuntu", sans-serif;
@@ -60,7 +67,7 @@ body {
 
 @media (max-width: 1200px) {
   body {
-    // padding: 16px;
+    // padding: 1rem;
   }
 }
 
