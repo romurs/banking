@@ -1,16 +1,16 @@
 import { createError, deleteCookie, getCookie, getRouterParam } from "h3";
 import { prisma } from "../../utils/db";
 import { verifyToken } from "../../utils/jwt";
-
-const typeMap: Record<string, string> = {
-  payment: "Оплата товаров и услуг",
-  transfer: "Перевод",
-  income: "Прочие поступления",
-};
+import {
+  getTransactionLabel,
+  normalizeTransactionType,
+} from "../../../utils/transaction-types";
 
 const mccMap: Record<string, string | null> = {
   payment: "5947",
   transfer: null,
+  transfer_in: null,
+  transfer_out: null,
   income: null,
 };
 
@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
     const transaction = await prisma.transaction.findFirst({
       where: {
         id: transactionId,
-        userId,
+        ownerUserId: userId,
       },
       select: {
         id: true,
@@ -95,17 +95,20 @@ export default defineEventHandler(async (event) => {
 
     const operationDate = new Date(transaction.date);
 
+    const normalized = normalizeTransactionType(transaction.type);
+
     return {
       id: transaction.id,
       amount: Number(transaction.amount),
+      type: transaction.type, // raw enum
+      typeLabel: getTransactionLabel(transaction.type),
       rawType: transaction.type,
-      type: typeMap[transaction.type] || transaction.type,
       description: transaction.description,
       counterparty: transaction.counterparty,
       accountId: transaction.accountId,
       date: formatDate(operationDate),
       dateTime: formatDateTime(operationDate),
-      mccCode: mccMap[transaction.type] ?? null,
+      mccCode: mccMap[normalized] ?? null,
       account: {
         id: transaction.account.id,
         accountNumberLastFour: transaction.account.accountNumber.slice(-4),

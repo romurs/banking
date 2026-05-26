@@ -3,9 +3,10 @@ import ArrowUp from "./ArrowUp.vue";
 import ArrowDown from "./ArrowDown.vue";
 import ShoppingCardFill from "./ShoppingCardFill.vue";
 import { useFinanceStore } from "~/stores/finance";
+import { getTransactionLabel } from "~/../utils/transaction-types";
 
 const props = defineProps<{
-  type: "Оплата товаров и услуг" | "Перевод" | "Прочие поступления" | string;
+  type: "PAYMENT" | "TRANSFER" | "INCOME" | string;
   ammount: string;
   date?: string;
   from: string;
@@ -16,7 +17,6 @@ const formattedDate = computed(() => {
   return props.date ? formatOperationDate(props.date) : "";
 });
 
-
 const formattedMoney = computed(() => {
   const num = parseFloat(props.ammount);
   if (isNaN(num)) return props.ammount;
@@ -24,26 +24,32 @@ const formattedMoney = computed(() => {
 });
 
 const amountSign = computed(() => {
-  return props.type === "Прочие поступления" ? "+" : "";
+  return props.type === "INCOME" || props.type === "TRANSFER_IN" ? "+" : "";
 });
 
 // Вычисляемый цвет для суммы
 const amountColor = computed(() => {
-  return props.type === "Прочие поступления" ? "#0b8523" : "inherit";
+  return props.type === "INCOME" || props.type === "TRANSFER_IN"
+    ? "#0b8523"
+    : "inherit";
 });
 
 const financeStore = useFinanceStore();
+
+const displayType = computed(() => getTransactionLabel(props.type));
 </script>
 
 <template>
   <NuxtLink :to="`transaction/${props.transaction}`">
     <div class="history_item">
       <div class="history_item_icon">
-        <div v-if="props.type == 'Оплата товаров и услуг'">
+        <div v-if="props.type == 'PAYMENT'">
           <ShoppingCardFill />
         </div>
-        <div v-else-if="props.type == 'Перевод'"><ArrowUp /></div>
-        <div v-else-if="props.type == 'Прочие поступления'"><ArrowDown /></div>
+        <div v-else-if="props.type == 'TRANSFER_OUT'"><ArrowUp /></div>
+        <div v-else-if="props.type == 'INCOME' || props.type == 'TRANSFER_IN'">
+          <ArrowDown />
+        </div>
       </div>
       <div class="history_data">
         <div class="history_info">
@@ -54,8 +60,8 @@ const financeStore = useFinanceStore();
           </p>
         </div>
         <div class="history_discription">
-          <p v-if="props.date" class="history_date" >{{ formattedDate }}</p>
-          <p class="history_type">{{ props.type }}</p>
+          <p v-if="props.date" class="history_date">{{ formattedDate }}</p>
+          <p class="history_type">{{ displayType }}</p>
         </div>
       </div>
     </div>
@@ -122,8 +128,6 @@ const financeStore = useFinanceStore();
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  .history_discription {
   }
   .history_ammount {
     font-size: 0.95rem;

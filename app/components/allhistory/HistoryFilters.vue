@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SmallArrowDownIcon from "./SmallArrowDownIcon.vue";
+import { getTransactionLabel } from "~/../utils/transaction-types";
 
 interface Account {
   id: number;
@@ -15,10 +16,9 @@ const props = defineProps<{
   selectedAccount: string;
   amountFrom: string;
   amountTo: string;
-  transactionTypes: string[];
+  transactionTypes: { key: string; label: string }[];
   accounts: Account[];
 }>();
-
 
 const handleClickOutside = (event: MouseEvent) => {
   if (!filtersRef.value) return;
@@ -59,11 +59,11 @@ const positionMenu = (menuEl: HTMLElement, buttonEl: HTMLElement) => {
   const viewportWidth = window.innerWidth;
 
   if (rect.right + 260 > viewportWidth) {
-    menuEl.style.left = 'auto';
-    menuEl.style.right = '0';
+    menuEl.style.left = "auto";
+    menuEl.style.right = "0";
   } else {
-    menuEl.style.left = '0';
-    menuEl.style.right = 'auto';
+    menuEl.style.left = "0";
+    menuEl.style.right = "auto";
   }
 };
 
@@ -77,7 +77,9 @@ const toggleFilter = (filter: "type" | "product" | "amount") => {
 
   nextTick(() => {
     const menu = activeMenuRef.value;
-    const button = document.querySelector(`[data-filter="${filter}"]`) as HTMLElement;
+    const button = document.querySelector(
+      `[data-filter="${filter}"]`,
+    ) as HTMLElement;
 
     if (menu && button) {
       positionMenu(menu, button);
@@ -85,7 +87,11 @@ const toggleFilter = (filter: "type" | "product" | "amount") => {
   });
 };
 
-const typeLabel = computed(() => props.selectedType || "Что показывать");
+const typeLabel = computed(() =>
+  props.selectedType
+    ? getTransactionLabel(props.selectedType)
+    : "Что показывать",
+);
 
 const accountLabel = computed(() => {
   if (!props.selectedAccount) return "Все карты и счета";
@@ -133,7 +139,7 @@ const clearAmount = () => {
 
 <template>
   <section ref="filtersRef" class="filters_bar" aria-label="Фильтры истории">
-    <div  class="filter_control">
+    <div class="filter_control">
       <button
         class="filter_chip"
         :class="{ active: selectedType }"
@@ -146,18 +152,18 @@ const clearAmount = () => {
         <SmallArrowDownIcon />
       </button>
 
-      <div v-if="openFilter === 'type'"  class="filter_menu">
+      <div v-if="openFilter === 'type'" class="filter_menu">
         <button class="filter_menu_item" type="button" @click="selectType('')">
           Все операции
         </button>
         <button
           v-for="type in transactionTypes"
-          :key="type"
+          :key="type.key"
           class="filter_menu_item"
           type="button"
-          @click="selectType(type)"
+          @click="selectType(type.key)"
         >
-          {{ type }}
+          {{ type.label }}
         </button>
       </div>
     </div>
@@ -175,7 +181,11 @@ const clearAmount = () => {
         <SmallArrowDownIcon />
       </button>
 
-      <div v-if="openFilter === 'product'" ref="activeMenuRef" class="filter_menu filter_menu-wide">
+      <div
+        v-if="openFilter === 'product'"
+        ref="activeMenuRef"
+        class="filter_menu filter_menu-wide"
+      >
         <button
           class="filter_menu_item"
           type="button"
@@ -214,7 +224,11 @@ const clearAmount = () => {
         </div>
       </button>
 
-      <div v-if="openFilter === 'amount'" ref="activeMenuRef" class="filter_menu amount_menu">
+      <div
+        v-if="openFilter === 'amount'"
+        ref="activeMenuRef"
+        class="filter_menu amount_menu"
+      >
         <div class="amount_inputs">
           <div class="input_group">
             <label for="amount_from">От (₽)</label>
@@ -304,7 +318,7 @@ const clearAmount = () => {
 .filter_menu {
   position: absolute;
   top: 100%;
-  left: 0;           /* по умолчанию */
+  left: 0; /* по умолчанию */
   margin-top: 8px;
   background: #fff;
   border: 1px solid #e5e5e5;

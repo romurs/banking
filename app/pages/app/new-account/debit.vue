@@ -10,12 +10,20 @@ useHead({
 const error = ref("");
 
 const hendleCreateNewDebitCard = async () => {
-  try{
+  try {
+    error.value = "";
+    const res = await $fetch("/api/accounts", {
+      method: "POST",
+      body: { type: "DEBIT" },
+    });
+
+    // navigate to accounts or main page
+    navigateTo("/app");
+  } catch (err: any) {
+    console.error("Create debit error", err);
+    error.value = err.data?.message ?? err.message ?? "Ошибка оформления";
   }
-  catch (err: any ){
-    error.value = err.date?.mesage ?? err.mesage ?? "Ошибка оформления"
-  }
-}
+};
 </script>
 
 <template>
@@ -41,7 +49,7 @@ const hendleCreateNewDebitCard = async () => {
           <Account_detail detail_title="До 10%" detail_desc="кэщбэк бонусами" />
         </div>
         <div class="order_new_card">
-          <button class="order" @click="hendleCreateNewDebitCard" >
+          <button class="order" @click="hendleCreateNewDebitCard">
             Оформить онлайн
           </button>
         </div>
@@ -54,7 +62,6 @@ const hendleCreateNewDebitCard = async () => {
 </template>
 
 <style scoped lang="scss">
-
 .na_main {
   display: flex;
   padding: 2rem;
@@ -64,11 +71,10 @@ const hendleCreateNewDebitCard = async () => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-@media (max-width: 1200px){
-  .na_main{
+@media (max-width: 1200px) {
+  .na_main {
     display: block;
   }
-  
 }
 
 .na_header {
@@ -83,7 +89,7 @@ const hendleCreateNewDebitCard = async () => {
 }
 
 .picture {
-  flex-shrink: 0; 
+  flex-shrink: 0;
   width: 100%;
   max-width: 260px;
   display: flex;
@@ -91,7 +97,7 @@ const hendleCreateNewDebitCard = async () => {
   align-self: center;
 }
 
-.card-container {  
+.card-container {
   width: 100%;
   max-width: 260px;
   aspect-ratio: 1.6 / 1;
@@ -130,7 +136,7 @@ const hendleCreateNewDebitCard = async () => {
   padding: 1rem;
   transition: opacity 0.15s ease;
 
-  &:hover{
+  &:hover {
     opacity: 0.4;
   }
 }

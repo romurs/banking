@@ -2,6 +2,7 @@
 import TransactionDetailRow from "./TransactionDetailRow.vue";
 import type { TransactionDetail } from "./types";
 import { useFinanceStore } from "~/stores/finance";
+import { getTransactionLabel } from "~/../utils/transaction-types";
 
 const props = defineProps<{
   transaction: TransactionDetail;
@@ -41,7 +42,8 @@ const details = computed(() => {
     },
     {
       label: "Тип операции",
-      value: props.transaction.type,
+      value:
+        getTransactionLabel(props.transaction.rawType ?? props.transaction.type),
     },
   ];
 

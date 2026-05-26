@@ -20,11 +20,12 @@ export default defineEventHandler(async (event) => {
     const userId = payload.userId;
 
     const accounts = await prisma.account.findMany({
-      where: { userId },
+      where: { ownerUserId: userId },
       select: {
         id: true,
         accountNumber: true,
         cardLastFour: true,
+        type: true,
         balance: true,
         currency: true,
         isActive: true,
@@ -35,6 +36,7 @@ export default defineEventHandler(async (event) => {
       id: acc.id,
       accountNumber: acc.accountNumber,
       cardLastFour: acc.cardLastFour,
+      type: acc.type,
       balance: Number(acc.balance),
       currency: acc.currency,
       isActive: acc.isActive,

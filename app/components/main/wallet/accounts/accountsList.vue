@@ -66,6 +66,8 @@ onBeforeUnmount(() => {
         :last-four-number="account.cardLastFour"
         :card-money="account.balance.toString()"
         :account-data="account.accountNumber"
+        :account-type="account.type"
+        :id="account.id"
       />
 
       <AccountItem

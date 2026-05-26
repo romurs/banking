@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const creditLimit = ref(300000);
 
+const emit = defineEmits<{ (e: "update:limit", value: number): void }>();
+
 const formattedLimit = computed(() => {
   return creditLimit.value.toLocaleString("ru-RU") + " ₽";
 });
@@ -9,6 +11,7 @@ const presets = [50000, 100000, 150000, 200000, 300000, 500000, 750000, 950000];
 
 const selectPreset = (value: number) => {
   creditLimit.value = value;
+  emit("update:limit", creditLimit.value);
 };
 
 const handleInput = (e: Event) => {
@@ -20,7 +23,11 @@ const handleInput = (e: Event) => {
   if (num > 1000000) num = 1000000;
 
   creditLimit.value = num;
+  emit("update:limit", creditLimit.value);
 };
+
+// emit when slider or v-model changes
+watch(creditLimit, (v) => emit("update:limit", v));
 </script>
 
 <template>
@@ -28,8 +35,7 @@ const handleInput = (e: Event) => {
     <div class="limit-header">
       <span class="limit-title">Кредитный лимит</span>
       <input
-        v-model="formattedLimit"
-        type="text"
+        :value="formattedLimit"
         class="limit-value-input"
         @blur="handleInput"
         @keypress.enter="handleInput"
@@ -40,17 +46,17 @@ const handleInput = (e: Event) => {
       <button
         v-for="value in presets"
         :key="value"
-        @click="selectPreset(value)"
         :class="{ active: creditLimit === value }"
         class="preset-btn"
+        @click="selectPreset(value)"
       >
         {{ (value / 1000).toFixed(0) }} тыс.
       </button>
     </div>
 
     <input
-      type="range"
       v-model="creditLimit"
+      type="range"
       min="50000"
       max="1000000"
       step="1000"
@@ -135,6 +141,7 @@ const handleInput = (e: Event) => {
 .limit-slider {
   width: 100%;
   height: 6px;
+  appearance: none;
   -webkit-appearance: none;
   background: #e5e5e5;
   border-radius: 9999px;
@@ -142,6 +149,7 @@ const handleInput = (e: Event) => {
   cursor: pointer;
 
   &::-webkit-slider-thumb {
+    appearance: none;
     -webkit-appearance: none;
     width: 24px;
     height: 24px;
@@ -153,6 +161,7 @@ const handleInput = (e: Event) => {
   }
 
   &::-moz-range-thumb {
+    appearance: none;
     width: 24px;
     height: 24px;
     background: #148f2b;

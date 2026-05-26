@@ -4,6 +4,7 @@ import HistoryFeed from "~/components/allhistory/HistoryFeed.vue";
 import BackButton from "~/components/newAccount/backButton.vue";
 import OperationHeader from "~/components/newAccount/operationHeader.vue";
 import { formatOperationDate } from "~/composables/useOperationDate";
+import { getTransactionLabel } from "~/../utils/transaction-types";
 import { useAccounts } from "~/composables/useAccounts";
 
 useHead({
@@ -53,7 +54,10 @@ const transactionTypes = computed(() => {
   const types = new Set(
     transactionList.value.map((transaction) => transaction.type),
   );
-  return Array.from(types);
+  return Array.from(types).map((t) => ({
+    key: t,
+    label: getTransactionLabel(t),
+  }));
 });
 
 const filteredTransactions = computed(() => {
@@ -120,7 +124,8 @@ const groupedTransactions = computed(() => {
 });
 
 function isIncome(type: string) {
-  return type.toLowerCase().includes("поступ");
+  const t = String(type).toUpperCase();
+  return t === "INCOME" || t === "TRANSFER_IN";
 }
 
 function isWithinAmountRange(

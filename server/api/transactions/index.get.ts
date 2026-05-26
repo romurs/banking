@@ -1,6 +1,7 @@
 import { getCookie, deleteCookie } from "h3";
 import { prisma } from "../../utils/db";
 import { verifyToken } from "../../utils/jwt";
+import { getTransactionLabel } from "../../../utils/transaction-types";
 
 export default defineEventHandler(async (event) => {
   try {
@@ -20,7 +21,7 @@ export default defineEventHandler(async (event) => {
     const userId = payload.userId;
 
     const transactions = await prisma.transaction.findMany({
-      where: { userId },
+      where: { ownerUserId: userId },
       select: {
         id: true,
         amount: true,
@@ -36,24 +37,16 @@ export default defineEventHandler(async (event) => {
       take: 50,
     });
 
-    return transactions.map((trans) => {
-      // Определяем тип по русскому названию для фронтенда
-      const typeMap: Record<string, string> = {
-        payment: "Оплата товаров и услуг",
-        transfer: "Перевод",
-        income: "Прочие поступления",
-      };
-
-      return {
-        id: trans.id,
-        amount: Number(trans.amount),
-        type: typeMap[trans.type] || trans.type,
-        counterparty: trans.counterparty,
-        description: trans.description,
-        date: new Date(trans.date).toLocaleDateString("ru-RU"),
-        accountId: trans.accountId,
-      };
-    });
+    return transactions.map((trans) => ({
+      id: trans.id,
+      amount: Number(trans.amount),
+      type: trans.type, // raw enum for client-side logic
+      typeLabel: getTransactionLabel(trans.type), // human-readable label
+      counterparty: trans.counterparty,
+      description: trans.description,
+      date: new Date(trans.date).toLocaleDateString("ru-RU"),
+      accountId: trans.accountId,
+    }));
   } catch (error) {
     console.error("Error fetching transactions:", error);
     throw createError({

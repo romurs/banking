@@ -3,7 +3,6 @@ import { prisma } from "../../utils/db";
 import { verifyToken } from "../../utils/jwt";
 
 export default defineEventHandler(async (event) => {
-  
   const token = getCookie(event, "auth_token");
 
   if (!token) {
@@ -20,7 +19,7 @@ export default defineEventHandler(async (event) => {
   try {
     const accounts = await prisma.account.findMany({
       where: {
-        userId: payload.userId,
+        ownerUserId: payload.userId,
       },
       orderBy: { createdAt: "desc" },
     });

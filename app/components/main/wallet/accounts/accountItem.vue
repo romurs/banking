@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CreditCardIcon from "./creditCardIcon.vue";
+import DebitCardIcon from "./debitCardIcon.vue";
 import PlusCircle from "./plusCircle.vue";
 import { useFinanceStore } from "~/stores/finance";
 
@@ -8,17 +9,17 @@ interface Props {
   cardMoney: string;
   accountData: string;
   accountType?: string;
+  id?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   accountType: "default",
 });
-// title="Платёжный счёт 1104. Баланс 13 800,78. руб.. Привязана 1 карта."
 
 const formattedMoney = computed(() => {
-  const num = parseFloat(props.cardMoney); // Парсим строку в число (на случай десятичных)
-  if (isNaN(num)) return props.cardMoney; // Если не число, возвращаем как есть
-  return num.toLocaleString("ru-RU"); // Форматируем с пробелами для тысяч (русский локаль)
+  const num = parseFloat(props.cardMoney); 
+  if (isNaN(num)) return props.cardMoney; 
+  return num.toLocaleString("ru-RU"); 
 });
 const lastfFourNumberOfAccount = computed(() => {
   return props.accountData.slice(-4);
@@ -37,12 +38,13 @@ const financeStore = useFinanceStore();
     :to="
       props.accountType === 'new'
         ? 'new-account'
-        : `account/${props.accountData}`
+        : `/app/account/${props.id}`
     "
   >
     <div class="account-container">
       <div class="account-head">
-        <CreditCardIcon v-if="props.accountType == 'default'" />
+        <CreditCardIcon v-if="props.accountType == 'CREDIT'" />
+        <DebitCardIcon v-else-if="props.accountType == 'DEBIT'" />
         <PlusCircle
           v-else-if="props.accountType == 'new'"
           class="new-card-icon"
@@ -50,7 +52,7 @@ const financeStore = useFinanceStore();
         <p class="last-four-number-card">{{ lastFourNumber }}</p>
       </div>
 
-      <div v-if="props.accountType == `default`" class="card-date">
+      <div v-if="props.accountType == `CREDIT` || props.accountType == `DEBIT`" class="card-date">
         <div class="money-data">
           <p v-if="financeStore.showFinance" class="hiden-money">*******</p>
           <p v-else class="money">{{ formattedMoney }}</p>

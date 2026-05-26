@@ -1,3 +1,4 @@
+<!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import Account_detail from "~/components/newAccount/account_detail.vue";
 import BackButton from "~/components/newAccount/backButton.vue";
@@ -9,11 +10,21 @@ useHead({
 });
 
 const error = ref("");
+const creditLimit = ref(300000);
 
 const hendleCreateNewCreditCard = async () => {
   try {
+    error.value = "";
+    await $fetch("/api/accounts", {
+      method: "POST",
+      body: { type: "CREDIT", creditLimit: creditLimit.value },
+    });
+
+    // navigate to accounts page or show success
+    navigateTo("/app");
   } catch (err: any) {
-    error.value = err.date?.mesage ?? err.mesage ?? "Ошибка оформления";
+    console.error("Create credit error", err);
+    error.value = err.data?.message ?? err.message ?? "Ошибка оформления";
   }
 };
 </script>
@@ -42,9 +53,9 @@ const hendleCreateNewCreditCard = async () => {
           <Account_detail detail_title="9.8%" detail_desc="процентная ставка" />
         </div>
 
-        <CreditLimitSection />
+        <CreditLimitSection @update:limit="(v) => (creditLimit = v)" />
         <div class="order_new_card">
-          <button class="order" @click="hendleCreateNewCreditCard" >
+          <button class="order" @click="hendleCreateNewCreditCard">
             Оформить онлайн
           </button>
         </div>
@@ -65,8 +76,8 @@ const hendleCreateNewCreditCard = async () => {
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
-@media (max-width: 1200px){
-  .na_main{
+@media (max-width: 1200px) {
+  .na_main {
     display: block;
   }
 }
@@ -89,7 +100,6 @@ const hendleCreateNewCreditCard = async () => {
   display: flex;
   justify-content: center;
   align-self: center;
-
 }
 
 .card-container {
@@ -108,8 +118,6 @@ const hendleCreateNewCreditCard = async () => {
   object-fit: contain;
   display: block;
 }
-
-
 
 .details {
   margin-top: 2rem;
