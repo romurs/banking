@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ProfileAside from "~/components/main/profileAside.vue";
 import NavigationItem from "~/components/navigationItem.vue";
 // import ProfileAside from "~/components/main/profileAside.vue";
 // import ProfileMobile from "~/components/main/ProfileMobile.vue";
@@ -18,7 +19,7 @@ import NavigationItem from "~/components/navigationItem.vue";
       </div>
     </main>
     <aside class="aside aside-right">
-      <!-- <ProfileAside /> -->
+      <ProfileAside />
     </aside>
     <NavigationItem_mobile />
   </div>

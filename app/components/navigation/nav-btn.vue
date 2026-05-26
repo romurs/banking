@@ -43,6 +43,10 @@ const props = defineProps<{
       margin-right: 0.6rem;
     }
 
+    &:hover {
+      color: #148f2b;
+    }
+
     // color: #148f2b
   }
 }

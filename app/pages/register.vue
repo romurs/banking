@@ -5,6 +5,11 @@ import FormButton from "~/components/authorization/formButton.vue";
 import { useAuthStore } from "~/stores/auth";
 import { APP_HOME_PATH, resolveAppRedirect } from "~/utils/auth-redirect";
 
+useHead({
+  title: "Регистрация | Сбербанк Онлайн",
+  meta: [{ name: "Registration", content: "Регистрация с банк" }],
+});
+
 const authStore = useAuthStore();
 const route = useRoute();
 

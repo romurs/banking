@@ -6,6 +6,11 @@ import FormButton from "~/components/authorization/formButton.vue";
 import { useAuthStore } from "~/stores/auth";
 import { APP_HOME_PATH, resolveAppRedirect } from "~/utils/auth-redirect";
 
+useHead({
+  title: "Авторизация | Сбербанк Онлайн",
+  meta: [{ name: "Authorisation", content: "Авторизация с банк" }],
+});
+
 const authStore = useAuthStore();
 const route = useRoute();
 
