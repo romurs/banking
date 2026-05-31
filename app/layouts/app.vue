@@ -3,6 +3,11 @@ import ProfileAside from "~/components/main/profileAside.vue";
 import NavigationItem from "~/components/navigationItem.vue";
 // import ProfileAside from "~/components/main/profileAside.vue";
 // import ProfileMobile from "~/components/main/ProfileMobile.vue";
+
+useHead({
+  title: "Страница сбербанка",
+  meta: [{ name: "sberbank", content: "Сбербанк Онлайн" }],
+});
 </script>
 
 <template>

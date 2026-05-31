@@ -40,7 +40,7 @@ const displayType = computed(() => getTransactionLabel(props.type));
 </script>
 
 <template>
-  <NuxtLink :to="`transaction/${props.transaction}`">
+  <NuxtLink :to="`/app/transaction/${props.transaction}`">
     <div class="history_item">
       <div class="history_item_icon">
         <div v-if="props.type == 'PAYMENT'">

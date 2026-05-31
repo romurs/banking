@@ -4,8 +4,8 @@ import { defineStore } from "pinia";
 interface User {
   id: number;
   email: string;
-  firstName?: string;
-  lastName?: string;
+  firstName?: null | string;
+  lastName?: null | string;
 }
 
 interface LoginCredentials {
@@ -18,6 +18,13 @@ interface RegisterPayload {
   firstName: string;
   lastName: string;
   password: string;
+}
+
+interface UpdateProfilePayload {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password?: string;
 }
 
 interface AuthResponse {
@@ -91,6 +98,18 @@ export const useAuthStore = defineStore("auth", () => {
     isInitialized.value = true;
   };
 
+  const updateProfile = async (payload: UpdateProfilePayload) => {
+    const response = await $fetch<AuthResponse>("/api/auth/profile", {
+      method: "PATCH",
+      body: payload,
+    });
+
+    user.value = response.user;
+    isInitialized.value = true;
+
+    return response.user;
+  };
+
   return {
     initialize,
     isAuthenticated,
@@ -98,6 +117,7 @@ export const useAuthStore = defineStore("auth", () => {
     login,
     logout,
     register,
+    updateProfile,
     user: readonly(user),
   };
 });

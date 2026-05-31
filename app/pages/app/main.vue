@@ -3,6 +3,7 @@ import HistoryHead from "~/components/main/history/HistoryHead.vue";
 import AccountsList from "~/components/main/wallet/accounts/accountsList.vue";
 import AccountHead from "~/components/main/wallet/accounts/AccountHead.vue";
 import HistoryList from "~/components/main/history/HistoryList.vue";
+import QuickTransfers from "~/components/payments/QuickTransfers.vue";
 
 useHead({
   title: "Сбербанк Онлайн",
@@ -20,6 +21,7 @@ useHead({
       <HistoryHead />
       <HistoryList />
     </div>
+    <QuickTransfers class="widjet" />
   </div>
 </template>
 

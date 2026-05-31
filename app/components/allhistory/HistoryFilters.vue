@@ -200,7 +200,7 @@ const clearAmount = () => {
           type="button"
           @click="selectAccount(account.id.toString())"
         >
-          {{ account.cardLastFour }} — {{ account.accountNumber.slice(-4) }}
+          {{ account.cardLastFour }} — 
           <span class="account_balance"
             >{{ account.balance.toLocaleString("ru-RU") }}
             {{ account.currency }}</span
