@@ -25,10 +25,10 @@ const {
 
 const pageTitle = computed(() => {
   if (!account.value) {
-    return "Детали счёта | Сбербанк Онлайн";
+    return "Детали счёта | Lumos Bank";
   }
 
-  return `Счёт •• ${account.value.accountNumberLastFour} | Сбербанк Онлайн`;
+  return `Счёт •• ${account.value.accountNumberLastFour} | Lumos Bank`;
 });
 
 const errorCopy = computed(() => {

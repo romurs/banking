@@ -26,7 +26,7 @@ const {
 
 const pageTitle = computed(() => {
   if (!transaction.value) {
-    return "Детали операции | Сбербанк Онлайн";
+    return "Детали операции | Lumos Bank";
   }
 
   return `${transaction.value.counterparty} | Детали операции`;

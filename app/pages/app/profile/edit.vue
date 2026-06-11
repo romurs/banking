@@ -6,7 +6,7 @@ import ProfileEditForm from "~/components/profile/ProfileEditForm.vue";
 import BackButton from "~/components/newAccount/backButton.vue";
 
 useHead({
-  title: "Редактирование профиля | Сбербанк Онлайн",
+  title: "Редактирование профиля | Lumos Bank",
 });
 
 const authStore = useAuthStore();

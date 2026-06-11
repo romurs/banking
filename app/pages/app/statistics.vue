@@ -12,7 +12,7 @@ import SummaryCard from "~/components/statistics/SummaryCard.vue";
 import CategoryList from "~/components/statistics/CategoryList.vue";
 import TopAccounts from "~/components/statistics/TopAccounts.vue";
 
-useHead({ title: "Статистика | Сбербанк Онлайн" });
+useHead({ title: "Статистика | Lumos Bank" });
 
 const { accounts } = useAccounts();
 const { transactions } = useTransactions();

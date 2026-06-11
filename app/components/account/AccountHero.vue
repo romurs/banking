@@ -45,7 +45,7 @@ const formatMoney = (amount: number) => {
     </p>
 
     <p v-if="props.account.cardLastFour" class="card_line">
-      МИР Сберкарта <span>•• {{ props.account.cardLastFour }}</span>
+      МИР Lumos Card <span>•• {{ props.account.cardLastFour }}</span>
     </p>
 
     <div class="account_actions">

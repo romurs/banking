@@ -7,7 +7,7 @@ import type {
 } from "~/components/payments/types";
 
 useHead({
-  title: "Переводы | Сбербанк Онлайн",
+  title: "Переводы | Lumos Bank",
   meta: [{ name: "description", content: "Перевод клиенту банка" }],
 });
 

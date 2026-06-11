@@ -2,7 +2,7 @@
 import BackButton from "~/components/newAccount/backButton.vue";
 
 useHead({
-  title: "Оформить новый счёт- Сбербанк Онлайн",
+  title: "Оформить новый счёт - Lumos Bank",
   meta: [{ name: "mainpage", content: "Управление считами онлайн" }],
 });
 </script>
@@ -38,7 +38,7 @@ useHead({
           <h2>Счёт</h2>
           <NewAccountItem
             title="Платёжный счёт"
-            description="Для переводов и платежей в Сбербанк Онлайн"
+            description="Для переводов и платежей в Lumos Bank"
             link="/app/new-account/cta"
             :clickable="false"
           >

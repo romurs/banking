@@ -3,7 +3,7 @@ import Account_detail from "~/components/newAccount/account_detail.vue";
 import BackButton from "~/components/newAccount/backButton.vue";
 
 useHead({
-  title: "Дебитовые карты - Сбербанк Онлайн",
+  title: "Дебитовые карты - Lumos Bank",
   meta: [{ name: "debitcard", content: "Оформить дебитовую карту" }],
 });
 
@@ -35,14 +35,14 @@ const hendleCreateNewDebitCard = async () => {
     <div class="na_main">
       <div class="item picture">
         <div class="card-container">
-          <NuxtImg src="sber_debet.png" alt="Дебитовая карта" />
+          <NuxtImg src="lumos_debet.png" alt="Дебитовая карта" />
         </div>
       </div>
       <div class="item desc">
-        <h2>СберКарта</h2>
+        <h2>Lumos Card</h2>
         <p>
-          Получайте кешбэк в категориях на выбор с картой СберБанка, переводите
-          деньги без комиссии и оплачивайте покупки со SberPay
+          Получайте кешбэк в категориях на выбор с картой Lumos Bank, переводите
+          деньги без комиссии и оплачивайте покупки через Lumos Pay
         </p>
         <div class="details">
           <Account_detail detail_title="От 0 ₽" detail_desc="обслуживание" />

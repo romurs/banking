@@ -5,7 +5,7 @@ import ProfileHero from "~/components/profile/ProfileHero.vue";
 import ProfileInfoCard from "~/components/profile/ProfileInfoCard.vue";
 
 useHead({
-  title: "Профиль | Сбербанк Онлайн",
+  title: "Профиль | Lumos Bank",
 });
 
 const authStore = useAuthStore();

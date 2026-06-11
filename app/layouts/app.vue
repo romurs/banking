@@ -5,8 +5,8 @@ import NavigationItem from "~/components/navigationItem.vue";
 // import ProfileMobile from "~/components/main/ProfileMobile.vue";
 
 useHead({
-  title: "Страница сбербанка",
-  meta: [{ name: "sberbank", content: "Сбербанк Онлайн" }],
+  title: "Страница Lumos Bank",
+  meta: [{ name: "lumos-bank", content: "Lumos Bank" }],
 });
 </script>
 

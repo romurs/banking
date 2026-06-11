@@ -17,7 +17,7 @@ import SavingsIcon from "./navigation/savingsIcon.vue";
     <NavBtn value="Платежи" link="/app/payments">
       <template #icon><PaymentsIcon /></template>
     </NavBtn>
-    <NavBtn value="Профиль" link="/app/loans">
+    <NavBtn value="Профиль" link="/app/profile">
       <template #icon><LoansIcon /></template>
     </NavBtn>
   </nav>

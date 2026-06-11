@@ -34,7 +34,7 @@ const details = computed(() => {
     },
     {
       label: "Способ списания",
-      value: `МИР Сберкарта •• ${props.transaction.account.cardLastFour}`,
+      value: `МИР Lumos Card •• ${props.transaction.account.cardLastFour}`,
     },
     {
       label: "Дата и время",

@@ -6,7 +6,7 @@ import HistoryList from "~/components/main/history/HistoryList.vue";
 import QuickTransfers from "~/components/payments/QuickTransfers.vue";
 
 useHead({
-  title: "Сбербанк Онлайн",
+  title: "Lumos Bank",
   meta: [{ name: "mainpage", content: "Управление считами онлайн" }],
 });
 </script>

@@ -5,7 +5,7 @@ import BackButton from "~/components/newAccount/backButton.vue";
 import CreditLimitSection from "~/components/newAccount/CreditLimitSection.vue";
 
 useHead({
-  title: "Кредитные карты - Сбербанк Онлайн",
+  title: "Кредитные карты - Lumos Bank",
   meta: [{ name: "creditcard", content: "Оформить кредитную карту" }],
 });
 
@@ -38,11 +38,11 @@ const hendleCreateNewCreditCard = async () => {
     <div class="na_main">
       <div class="item picture">
         <div class="card-container">
-          <NuxtImg src="creditsbk_mob.png" alt="Кредитная карта" />
+          <NuxtImg src="lumos_credit_mob.png" alt="Кредитная карта" />
         </div>
       </div>
       <div class="item desc">
-        <h2>Кредитная СберКарта</h2>
+        <h2>Кредитная Lumos Card</h2>
         <p>Решение за 2 минуты онлайн.</p>
         <div class="details">
           <Account_detail

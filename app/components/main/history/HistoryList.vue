@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import HistoryItem from "./HistoryItem.vue";
 
-// Используем composable для получения транзакций
 const { transactions, loading, error } = useTransactions();
 
-// Показываем только последние 3 транзакции
+// только последние 3 транзакции
 const lastThreeTransactions = computed(() => {
   return transactions.value.slice(0, 3);
 });

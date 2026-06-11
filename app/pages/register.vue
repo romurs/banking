@@ -6,7 +6,7 @@ import { useAuthStore } from "~/stores/auth";
 import { APP_HOME_PATH, resolveAppRedirect } from "~/utils/auth-redirect";
 
 useHead({
-  title: "Регистрация | Сбербанк Онлайн",
+  title: "Регистрация | Lumos Bank",
   meta: [{ name: "Registration", content: "Регистрация с банк" }],
 });
 
@@ -54,7 +54,7 @@ const handleRegister = async () => {
 <template>
   <div class="auth-card-shell">
     <div class="auth-card">
-      <h1 class="auth-title">Сбербанк Онлайн</h1>
+      <h1 class="auth-title">Lumos Bank</h1>
 
       <form class="auth-form" @submit.prevent="handleRegister">
         <div class="form-group">

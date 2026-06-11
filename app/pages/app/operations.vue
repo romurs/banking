@@ -8,7 +8,7 @@ import { getTransactionLabel } from "~/../utils/transaction-types";
 import { useAccounts } from "~/composables/useAccounts";
 
 useHead({
-  title: "История операций | Сбербанк Онлайн",
+  title: "История операций | Lumos Bank",
   meta: [{ name: "AllHistory", content: "История всех операций" }],
 });
 
