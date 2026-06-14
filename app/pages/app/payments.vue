@@ -67,7 +67,7 @@ const openTransaction = (transactionId: number) => {
 
 .state_card {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -77,16 +77,16 @@ const openTransaction = (transactionId: number) => {
   text-align: center;
 
   p {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 1rem;
     font-weight: 700;
   }
 
   button {
-    background: #0b8523;
+    background: var(--color-primary);
     border: none;
     border-radius: 12px;
-    color: #fff;
+    color: var(--color-surface);
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 700;

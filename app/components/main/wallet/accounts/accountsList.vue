@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
 }
 
 .error {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-weight: 500;
 }
 
@@ -121,12 +121,12 @@ onBeforeUnmount(() => {
 
 .shadow-left {
   left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0));
+  background: var(--shadow-edge-right);
 }
 
 .shadow-right {
   right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0));
+  background: var(--shadow-edge-left);
 }
 
 /* показываем */
@@ -168,8 +168,8 @@ onBeforeUnmount(() => {
   transform: translateY(-50%);
   padding: 8px 12px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid #ccc;
+  background: color-mix(in srgb, var(--color-surface) 80%, var(--color-transparent));
+  border: 1px solid var(--color-border-strong);
   border-radius: 50%;
 
   opacity: 0;

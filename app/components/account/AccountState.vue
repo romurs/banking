@@ -23,7 +23,7 @@ defineEmits<{
 <style scoped lang="scss">
 .account_state {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -34,14 +34,14 @@ defineEmits<{
 }
 
 h2 {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.25rem;
   line-height: 1.25;
   margin: 0;
 }
 
 p {
-  color: rgba(38, 38, 38, 0.58);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   line-height: 1.4;
   margin-top: 0.6rem;
@@ -49,10 +49,10 @@ p {
 }
 
 button {
-  background: #0b8523;
+  background: var(--color-primary);
   border: none;
   border-radius: 12px;
-  color: #fff;
+  color: var(--color-surface);
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 700;

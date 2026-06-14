@@ -142,9 +142,9 @@ const handleRegister = async () => {
 }
 
 .auth-card {
-  background: white;
+  background: var(--color-surface);
   border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-card);
   padding: 40px;
   width: 100%;
   max-width: 400px;
@@ -155,7 +155,7 @@ const handleRegister = async () => {
   font-weight: 700;
   margin-bottom: 30px;
   text-align: center;
-  color: #1a1a1a;
+  color: var(--color-text-strong);
 }
 
 .auth-form {
@@ -173,32 +173,32 @@ const handleRegister = async () => {
 .form-label {
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: var(--color-text);
 }
 
 .form-input {
   padding: 12px 16px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-border-strong);
   border-radius: 8px;
   font-size: 16px;
   transition: border-color 0.3s;
 
   &:focus {
     outline: none;
-    border-color: #148f2b;
-    box-shadow: 0 0 0 3px rgba(20, 143, 43, 0.14);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-focus);
   }
 
   &::placeholder {
-    color: #999;
+    color: var(--color-text-soft);
   }
 }
 
 .error-message {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-size: 14px;
   padding: 12px;
-  background-color: rgba(211, 47, 47, 0.1);
+  background-color: var(--color-danger-focus);
   border-radius: 8px;
   text-align: center;
 }
@@ -209,19 +209,19 @@ const handleRegister = async () => {
 
   p {
     font-size: 14px;
-    color: #666;
+    color: var(--color-text-muted);
     margin-bottom: 8px;
   }
 }
 
 .auth-link {
-  color: #148f2b;
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 
   &:hover {
-    color: #0f7021;
+    color: var(--color-primary-hover);
     text-decoration: underline;
   }
 }

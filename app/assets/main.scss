@@ -46,11 +46,69 @@
   font-weight: 700;
   font-style: italic;
 }
-html{
+
+:root {
+  --color-app-bg: #eef2f7;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f8fb;
+  --color-surface-muted: #e9eef6;
+  --color-surface-hover: #f2f5ff;
+  --color-transparent: transparent;
+
+  --color-text: #1f2937;
+  --color-text-strong: #111827;
+  --color-text-muted: rgba(31, 41, 55, 0.62);
+  --color-text-soft: rgba(31, 41, 55, 0.48);
+  --color-text-inverse: #ffffff;
+
+  --color-border: rgba(31, 41, 55, 0.1);
+  --color-border-strong: #d8e0ea;
+
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-primary-soft: #eef2ff;
+  --color-primary-border: rgba(79, 70, 229, 0.24);
+  --color-primary-focus: rgba(79, 70, 229, 0.16);
+  --color-primary-shadow: rgba(79, 70, 229, 0.3);
+
+  --color-secondary: #0891b2;
+  --color-info: #2563eb;
+  --color-info-soft: #eff6ff;
+  --color-success: #0f766e;
+  --color-success-soft: #e6fffb;
+  --color-warning: #d97706;
+  --color-warning-soft: #fff7ed;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fff1f2;
+  --color-danger-hover: #fee2e2;
+  --color-danger-focus: rgba(220, 38, 38, 0.16);
+  --color-danger-border: rgba(220, 38, 38, 0.22);
+
+  --gradient-auth: linear-gradient(135deg, #312e81 0%, #0891b2 100%);
+  --gradient-hero: linear-gradient(135deg, #eef2ff 0%, #cffafe 58%, #fde68a 100%);
+
+  --shadow-card: 0 10px 40px rgba(15, 23, 42, 0.18);
+  --shadow-media: 0 10px 30px rgba(15, 23, 42, 0.14);
+  --shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.07);
+  --shadow-popover: 0 12px 30px rgba(15, 23, 42, 0.14);
+  --shadow-floating: 0 2px 6px rgba(15, 23, 42, 0.14);
+  --shadow-primary-glow: 0 5px 20px rgba(79, 70, 229, 0.26);
+  --shadow-edge-right: linear-gradient(to right, rgba(15, 23, 42, 0.14), transparent);
+  --shadow-edge-left: linear-gradient(to left, rgba(15, 23, 42, 0.14), transparent);
+
+  --icon-card-dark: #253449;
+  --icon-card-mid: #64748b;
+  --icon-card-soft: #cbd5e1;
+  --icon-card-chip: #fde68a;
+  --icon-card-chip-line: #f59e0b;
+}
+
+html {
   scrollbar-gutter: stable;     /* Основное решение */
   overflow-y: scroll;
 }
-body{
+
+body {
   overflow-y: visible;
 }
 
@@ -59,7 +117,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #f1f1f1;
+  background-color: var(--color-app-bg);
 
   display: block;
   font-family: "Ubuntu", sans-serif;
@@ -86,6 +144,6 @@ a {
 p {
   margin: 0;
 }
-button{
+button {
   font-family: "Ubuntu", sans-serif;
 }

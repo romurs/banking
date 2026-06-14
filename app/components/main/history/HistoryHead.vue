@@ -21,7 +21,7 @@
 .all_history_btn {
   background: none;
   border: none;
-  color: #0b8523;
+  color: var(--color-primary);
   font-weight: 500;
   font-size: medium;
   transition: 0.15s ease;
@@ -29,6 +29,6 @@
 }
 
 .all_history_btn:hover {
-  color: black;
+  color: var(--color-text-strong);
 }
 </style>

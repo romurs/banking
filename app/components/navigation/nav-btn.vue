@@ -17,7 +17,7 @@ const props = defineProps<{
 <style scoped lang="scss">
 .nav-link {
   &.router-link-exact-active {
-    color: #148f2b;
+    color: var(--color-primary);
     font-weight: bold;
     font-size: larger;
   }
@@ -44,10 +44,10 @@ const props = defineProps<{
     }
 
     &:hover {
-      color: #148f2b;
+      color: var(--color-primary);
     }
 
-    // color: #148f2b
+    // color: var(--color-primary)
   }
 }
 

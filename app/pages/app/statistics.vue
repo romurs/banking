@@ -111,7 +111,7 @@ const topAccounts = computed(() => {
 }
 
 .col {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 14px;
   padding: 1rem;
 
@@ -122,7 +122,7 @@ const topAccounts = computed(() => {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--color-app-bg);
 }
 
 .acc_row {
@@ -130,7 +130,7 @@ const topAccounts = computed(() => {
   gap: 1rem;
   align-items: center;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--color-app-bg);
 }
 
 .acc_label {
@@ -140,25 +140,25 @@ const topAccounts = computed(() => {
   font-weight: 700;
 }
 .acc_net {
-  color: rgba(38, 38, 38, 0.6);
+  color: var(--color-text-muted);
 }
 
 .trend_row {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--color-app-bg);
 }
 .trend_values {
   display: flex;
   gap: 1rem;
 }
 .trend_income {
-  color: #0b8523;
+  color: var(--color-primary);
   font-weight: 700;
 }
 .trend_expense {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-weight: 700;
 }
 

@@ -285,10 +285,10 @@ const clearAmount = () => {
 
 .filter_chip {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border: none;
   border-radius: 14px;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   display: flex;
   font-size: 0.95rem;
@@ -304,9 +304,9 @@ const clearAmount = () => {
 
 .filter_chip:hover,
 .filter_chip.active {
-  background: #f8fbf8;
-  box-shadow: inset 0 0 0 1px rgba(11, 133, 35, 0.22);
-  color: #0b8523;
+  background: var(--color-surface-hover);
+  box-shadow: inset 0 0 0 1px var(--color-primary-border);
+  color: var(--color-primary);
 }
 
 .icon_wrapper {
@@ -320,10 +320,10 @@ const clearAmount = () => {
   top: 100%;
   left: 0; /* по умолчанию */
   margin-top: 8px;
-  background: #fff;
-  border: 1px solid #e5e5e5;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
   border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-popover);
   min-width: 210px;
   padding: 6px;
   z-index: 9999;
@@ -348,16 +348,16 @@ const clearAmount = () => {
 }
 
 .input_group label {
-  color: #616161;
+  color: var(--color-text-muted);
   font-size: 0.8rem;
   font-weight: 600;
 }
 
 .amount_inputs input {
-  background: #f7f9f7;
-  border: 1px solid #d8e3d8;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border-strong);
   border-radius: 12px;
-  color: #1f1f1f;
+  color: var(--color-text);
   font-size: 0.95rem;
   padding: 0.85rem 0.9rem;
   outline: none;
@@ -367,14 +367,14 @@ const clearAmount = () => {
 }
 
 .amount_inputs input:focus {
-  border-color: #6aae68;
-  box-shadow: 0 0 0 3px rgba(106, 174, 104, 0.14);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-focus);
 }
 
 .clear_btn {
   margin: 0 0.25rem 0.35rem;
   border-radius: 12px;
-  color: #0b8523;
+  color: var(--color-primary);
 }
 
 .filter_menu-wide {
@@ -384,10 +384,10 @@ const clearAmount = () => {
 }
 
 .filter_menu_item {
-  background: transparent;
+  background: var(--color-transparent);
   border: none;
   border-radius: 10px;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   font-size: 0.92rem;
   font-weight: 500;
@@ -401,7 +401,7 @@ const clearAmount = () => {
 }
 
 .filter_menu_item:hover {
-  background: #f1f1f1;
+  background: var(--color-app-bg);
 }
 
 @media (max-width: 1200px) {

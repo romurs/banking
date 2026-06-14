@@ -231,7 +231,7 @@ const submitTransfer = async () => {
 
 <style scoped lang="scss">
 .transfer_form {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -241,7 +241,7 @@ const submitTransfer = async () => {
 
 .form_head {
   h1 {
-    color: #262626;
+    color: var(--color-text);
     font-size: 1.65rem;
     font-weight: 700;
     line-height: 1.15;
@@ -249,7 +249,7 @@ const submitTransfer = async () => {
   }
 
   p {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 0.95rem;
     line-height: 1.35;
     margin-top: 0.45rem;
@@ -262,7 +262,7 @@ const submitTransfer = async () => {
   gap: 0.45rem;
 
   span {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 0.86rem;
     font-weight: 700;
   }
@@ -277,10 +277,10 @@ const submitTransfer = async () => {
 
   input,
   select {
-    background: #f7f9f7;
-    border: 1px solid rgba(38, 38, 38, 0.08);
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border);
     border-radius: 14px;
-    color: #262626;
+    color: var(--color-text);
     font-family: "Ubuntu", sans-serif;
     font-size: 1rem;
     min-height: 52px;
@@ -291,26 +291,26 @@ const submitTransfer = async () => {
       box-shadow 0.15s ease;
 
     &:focus {
-      border-color: #0b8523;
-      box-shadow: 0 0 0 3px rgba(11, 133, 35, 0.12);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus);
     }
 
     &.invalid {
-      border-color: #d32f2f;
-      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+      border-color: var(--color-danger);
+      box-shadow: 0 0 0 3px var(--color-danger-focus);
     }
 
     &.invalid:focus {
-      border-color: #d32f2f;
-      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.16);
+      border-color: var(--color-danger);
+      box-shadow: 0 0 0 3px var(--color-danger-focus);
     }
   }
 
   select {
     appearance: none;
     background-image:
-      linear-gradient(45deg, transparent 50%, #0b8523 50%),
-      linear-gradient(135deg, #0b8523 50%, transparent 50%);
+      linear-gradient(45deg, var(--color-transparent) 50%, var(--color-primary) 50%),
+      linear-gradient(135deg, var(--color-primary) 50%, var(--color-transparent) 50%);
     background-position:
       calc(100% - 20px) 50%,
       calc(100% - 14px) 50%;
@@ -321,8 +321,8 @@ const submitTransfer = async () => {
   }
 
   select option {
-    background: #fff;
-    color: #262626;
+    background: var(--color-surface);
+    color: var(--color-text);
     font-family: "Ubuntu", sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
@@ -330,20 +330,20 @@ const submitTransfer = async () => {
   }
 
   select option:checked {
-    background: #e8f7ec;
-    color: #0b8523;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
   }
 }
 
 .balance_hint {
-  color: rgba(38, 38, 38, 0.58);
+  color: var(--color-text-muted);
   font-size: 0.82rem;
   font-weight: 700;
   white-space: nowrap;
 }
 
 .field_error {
-  color: #d32f2f !important;
+  color: var(--color-danger) !important;
   font-size: 0.82rem !important;
   font-weight: 700;
 }
@@ -357,20 +357,20 @@ const submitTransfer = async () => {
 }
 
 .form_message-error {
-  background: #fff5f6;
-  color: #d32f2f;
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
 }
 
 .form_message-success {
-  background: #e0ffe9;
-  color: #0b8523;
+  background: var(--color-success-soft);
+  color: var(--color-primary);
 }
 
 .submit_button {
-  background: #0b8523;
+  background: var(--color-primary);
   border: none;
   border-radius: 14px;
-  color: #fff;
+  color: var(--color-surface);
   cursor: pointer;
   font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
@@ -381,7 +381,7 @@ const submitTransfer = async () => {
     transform 0.15s ease;
 
   &:not(:disabled):hover {
-    background: #21a038;
+    background: var(--color-primary-hover);
   }
 
   &:not(:disabled):active {

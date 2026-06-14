@@ -26,9 +26,9 @@ const goBack = () => {
 .account_back {
   align-items: center;
   align-self: flex-start;
-  background: transparent;
+  background: var(--color-transparent);
   border: none;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   display: inline-flex;
   font-size: 1.2rem;

@@ -43,10 +43,10 @@ const logoutUser = async () => {
 }
 
 .profile_empty {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 1.5rem;
-  color: #262626;
+  color: var(--color-text);
 }
 
 @media (max-width: 480px) {

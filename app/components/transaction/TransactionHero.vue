@@ -59,7 +59,7 @@ const saveCertificate = () => {
 <style scoped lang="scss">
 .transaction_hero {
   align-items: center;
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
+  background: var(--gradient-hero);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ const saveCertificate = () => {
 }
 
 .transaction_amount {
-  color: #262626;
+  color: var(--color-text);
   font-size: 2.4rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -83,12 +83,12 @@ const saveCertificate = () => {
 }
 
 .transaction_amount.income {
-  color: #0b8523;
+  color: var(--color-primary);
 }
 
 .bonus_line {
   align-items: center;
-  color: #0b8523;
+  color: var(--color-primary);
   display: flex;
   font-size: 0.95rem;
   font-weight: 700;
@@ -97,7 +97,7 @@ const saveCertificate = () => {
 }
 
 .bonus_mark {
-  background: #0b8523;
+  background: var(--color-primary);
   border-radius: 50%;
   display: inline-block;
   height: 14px;
@@ -105,7 +105,7 @@ const saveCertificate = () => {
   width: 14px;
 
   &::after {
-    background: #fff;
+    background: var(--color-surface);
     border-radius: 50%;
     content: "";
     height: 5px;
@@ -117,7 +117,7 @@ const saveCertificate = () => {
 }
 
 .counterparty {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
@@ -126,10 +126,10 @@ const saveCertificate = () => {
 }
 
 .save_button {
-  background: #fff;
+  background: var(--color-surface);
   border: none;
   border-radius: 14px;
-  color: #0b8523;
+  color: var(--color-primary);
   cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
@@ -140,7 +140,7 @@ const saveCertificate = () => {
     transform 0.15s ease;
 
   &:hover {
-    background: #f8fbf8;
+    background: var(--color-surface-hover);
   }
 
   &:active {

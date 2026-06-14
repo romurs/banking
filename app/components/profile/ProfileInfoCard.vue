@@ -36,13 +36,13 @@ const profileRows = computed(() => [
 
 <style scoped lang="scss">
 .profile_card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 1.5rem;
 }
 
 h2 {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -58,7 +58,7 @@ h2 {
 
 .profile_row {
   align-items: center;
-  background: #f7f9f7;
+  background: var(--color-surface-soft);
   border-radius: 14px;
   display: flex;
   gap: 1rem;
@@ -67,13 +67,13 @@ h2 {
   padding: 0 1rem;
 
   p {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 0.9rem;
     font-weight: 700;
   }
 
   span {
-    color: #262626;
+    color: var(--color-text);
     font-size: 0.98rem;
     font-weight: 700;
     overflow-wrap: anywhere;

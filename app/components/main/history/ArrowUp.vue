@@ -25,8 +25,8 @@
 
 <style scoped lang="scss">
 .icon_arrow_up {
-  background: #edf8ff;
-  color: #1274b5;
+  background: var(--color-info-soft);
+  color: var(--color-info);
   align-items: center;
   border-radius: 50%;
   display: flex;

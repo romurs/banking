@@ -57,7 +57,7 @@ const formatMoney = (amount: number) => {
 
 <style scoped lang="scss">
 .account_hero {
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
+  background: var(--gradient-hero);
   border-radius: 20px;
   padding: 1.5rem;
 }
@@ -70,24 +70,24 @@ const formatMoney = (amount: number) => {
 }
 
 .account_title {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.35rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .account_number {
-  color: rgba(38, 38, 38, 0.58);
+  color: var(--color-text-muted);
   font-size: 1.05rem;
   font-weight: 700;
   margin-top: 0.25rem;
 }
 
 .delete_button {
-  background: #fff;
+  background: var(--color-surface);
   border: none;
   border-radius: 12px;
-  color: #d32f2f;
+  color: var(--color-danger);
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 700;
@@ -95,13 +95,13 @@ const formatMoney = (amount: number) => {
   padding: 0 0.9rem;
 
   &:hover {
-    background: #f7caca;
+    background: var(--color-danger-hover);
     opacity: 0.6;
   }
 }
 
 .account_balance {
-  color: #262626;
+  color: var(--color-text);
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.1;
@@ -109,7 +109,7 @@ const formatMoney = (amount: number) => {
 }
 
 .card_line {
-  color: rgba(38, 38, 38, 0.66);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   font-weight: 700;
   margin-top: 0.5rem;
@@ -128,9 +128,9 @@ const formatMoney = (amount: number) => {
 
 .action_button {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 14px;
-  color: #000000;
+  color: var(--color-text-strong);
   display: flex;
   font-size: 1rem;
   font-weight: 700;
@@ -140,9 +140,9 @@ const formatMoney = (amount: number) => {
   cursor: pointer;
 
   &:hover {
-    background: #f8fbf8;
-    box-shadow: inset 0 0 0 1px rgba(11, 133, 35, 0.22);
-    color: #0b8523;
+    background: var(--color-surface-hover);
+    box-shadow: inset 0 0 0 1px var(--color-primary-border);
+    color: var(--color-primary);
   }
 }
 

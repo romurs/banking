@@ -30,7 +30,7 @@ useHead({
   margin-bottom: 1rem;
 }
 .wallet {
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
+  background: var(--gradient-hero);
   border-radius: 20px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -50,7 +50,7 @@ useHead({
   // padding-right: 1.5rem;
   // padding-bottom: 1rem;
   // padding-top: 1rem;
-  background-color: #fff;
+  background-color: var(--color-surface);
 }
 
 @media (max-width: 480px) {

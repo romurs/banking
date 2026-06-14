@@ -116,7 +116,7 @@ const categories = computed(() => {
 
 <style scoped lang="scss">
 .turnover_card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 1.5rem;
 }
@@ -128,14 +128,14 @@ const categories = computed(() => {
   justify-content: space-between;
 
   p {
-    color: #262626;
+    color: var(--color-text);
     font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.25;
   }
 
   span {
-    color: #262626;
+    color: var(--color-text);
     flex-shrink: 0;
     font-size: 1.05rem;
     font-weight: 700;
@@ -155,13 +155,13 @@ const categories = computed(() => {
   justify-content: space-between;
 
   p {
-    color: #262626;
+    color: var(--color-text);
     font-size: 0.95rem;
     font-weight: 700;
   }
 
   span {
-    color: rgba(38, 38, 38, 0.56);
+    color: var(--color-text-muted);
     flex-shrink: 0;
     font-size: 0.9rem;
     font-weight: 700;
@@ -169,7 +169,7 @@ const categories = computed(() => {
 }
 
 .category_track {
-  background: #f1f1f1;
+  background: var(--color-app-bg);
   border-radius: 999px;
   height: 8px;
   margin-top: 0.45rem;
@@ -177,7 +177,7 @@ const categories = computed(() => {
 }
 
 .category_bar {
-  background: #0b8523;
+  background: var(--color-primary);
   border-radius: inherit;
   height: 100%;
   min-width: 8px;
@@ -185,16 +185,16 @@ const categories = computed(() => {
 
 .turnover_card-income {
   .category_bar {
-    background: #21a038;
+    background: var(--color-primary-hover);
   }
 
   .turnover_head span {
-    color: #0b8523;
+    color: var(--color-primary);
   }
 }
 
 .empty_text {
-  color: rgba(38, 38, 38, 0.56);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   margin-top: 1rem;
 }

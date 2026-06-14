@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<{
   margin-left: 0;
   min-width: 4.75rem;
   height: 4.75rem;
-  background-color: #f1f1f1;
+  background-color: var(--color-app-bg);
   justify-content: center;
   border-radius: 8px;
 }

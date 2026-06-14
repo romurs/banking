@@ -28,7 +28,7 @@ const props = defineProps<{ income: number; expense: number; net: number }>();
 
 <style scoped lang="scss">
 .summary_card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 14px;
   padding: 1rem;
 }
@@ -38,7 +38,7 @@ const props = defineProps<{ income: number; expense: number; net: number }>();
   justify-content: space-between;
 }
 .label {
-  color: rgba(38, 38, 38, 0.6);
+  color: var(--color-text-muted);
   font-weight: 700;
 }
 .value {
@@ -46,6 +46,6 @@ const props = defineProps<{ income: number; expense: number; net: number }>();
   font-size: 1.2rem;
 }
 .value-expense {
-  color: #d32f2f;
+  color: var(--color-danger);
 }
 </style>

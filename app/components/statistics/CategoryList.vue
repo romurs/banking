@@ -27,7 +27,7 @@ const props = withDefaults(
 
 <style scoped lang="scss">
 .col {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 14px;
   padding: 1rem;
 
@@ -40,10 +40,10 @@ const props = withDefaults(
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--color-app-bg);
 }
 .cat_label {
-  color: #262626;
+  color: var(--color-text);
 }
 .cat_amount {
   font-weight: 700;

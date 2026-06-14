@@ -36,14 +36,14 @@ const financeStore = useFinanceStore();
 <style scoped lang="scss">
 .operations_header {
   align-items: flex-start;
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
+  background: var(--gradient-hero);
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
   padding: 1.5rem;
 
   h1 {
-    color: #262626;
+    color: var(--color-text);
     font-size: 2rem;
     font-weight: 700;
     line-height: 1.1;
@@ -51,7 +51,7 @@ const financeStore = useFinanceStore();
   }
 
   p {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 0.95rem;
     font-weight: 500;
     margin-top: 0.5rem;
@@ -65,10 +65,10 @@ const financeStore = useFinanceStore();
 
 .icon_button {
   align-items: center;
-  background: rgba(255, 255, 255, 0.52);
+  background: color-mix(in srgb, var(--color-surface) 52%, var(--color-transparent));
   border: none;
   border-radius: 12px;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   display: flex;
   height: 44px;
@@ -84,7 +84,7 @@ const financeStore = useFinanceStore();
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.72);
+    background: color-mix(in srgb, var(--color-surface) 72%, var(--color-transparent));
   }
 
   &:active {

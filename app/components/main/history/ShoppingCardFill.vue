@@ -23,8 +23,8 @@
 
 <style scoped lang="scss">
 .icon_payment {
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
-  color: #6157d8;
+  background: var(--gradient-hero);
+  color: var(--color-primary);
   align-items: center;
   border-radius: 50%;
   display: flex;

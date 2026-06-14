@@ -83,13 +83,13 @@ const details = computed(() => {
 
 <style scoped lang="scss">
 .details_card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 1.5rem;
 }
 
 h2 {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.35rem;
   font-weight: 700;
   line-height: 1.2;

@@ -27,10 +27,9 @@ const amountSign = computed(() => {
   return props.type === "INCOME" || props.type === "TRANSFER_IN" ? "+" : "";
 });
 
-// Вычисляемый цвет для суммы
 const amountColor = computed(() => {
   return props.type === "INCOME" || props.type === "TRANSFER_IN"
-    ? "#0b8523"
+    ? "var(--color-primary)"
     : "inherit";
 });
 

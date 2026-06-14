@@ -51,7 +51,7 @@ const headBtnTitle = computed(() =>
   margin-right: 1rem;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  background-color: rgba(38, 38, 38, 0.08);
+  background-color: var(--color-border);
   border: none;
   align-items: center;
   cursor: pointer;

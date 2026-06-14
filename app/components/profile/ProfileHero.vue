@@ -43,7 +43,7 @@ const initials = computed(() => getProfileInitials(props.user));
 
 <style scoped lang="scss">
 .profile_hero {
-  background: linear-gradient(135deg, #d6e0ff, #f6e4f1);
+  background: var(--gradient-hero);
   border-radius: 20px;
   padding: 1.5rem;
 }
@@ -54,7 +54,7 @@ const initials = computed(() => getProfileInitials(props.user));
   gap: 1rem;
 
   h1 {
-    color: #262626;
+    color: var(--color-text);
     font-size: 1.65rem;
     font-weight: 700;
     line-height: 1.15;
@@ -63,7 +63,7 @@ const initials = computed(() => getProfileInitials(props.user));
   }
 
   p {
-    color: rgba(38, 38, 38, 0.62);
+    color: var(--color-text-muted);
     font-size: 0.95rem;
     font-weight: 700;
     margin-top: 0.35rem;
@@ -73,9 +73,9 @@ const initials = computed(() => getProfileInitials(props.user));
 
 .avatar {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 18px;
-  color: #0b8523;
+  color: var(--color-primary);
   display: flex;
   flex: 0 0 72px;
   font-size: 1.35rem;
@@ -93,10 +93,10 @@ const initials = computed(() => getProfileInitials(props.user));
 
 .profile_action {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border: none;
   border-radius: 14px;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   display: flex;
   font-family: "Ubuntu", sans-serif;
@@ -107,19 +107,19 @@ const initials = computed(() => getProfileInitials(props.user));
   padding: 0 1rem;
 
   &:hover {
-    background: #f8fbf8;
-    box-shadow: inset 0 0 0 1px rgba(11, 133, 35, 0.22);
-    color: #0b8523;
+    background: var(--color-surface-hover);
+    box-shadow: inset 0 0 0 1px var(--color-primary-border);
+    color: var(--color-primary);
   }
 }
 
 .profile_action-danger {
-  color: #d32f2f;
+  color: var(--color-danger);
 
   &:hover {
-    background: #fff5f6;
-    box-shadow: inset 0 0 0 1px rgba(211, 47, 47, 0.2);
-    color: #d32f2f;
+    background: var(--color-danger-soft);
+    box-shadow: inset 0 0 0 1px var(--color-danger-border);
+    color: var(--color-danger);
   }
 }
 

@@ -36,7 +36,7 @@ const lastThreeTransactions = computed(() => {
 }
 
 .error {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-weight: 500;
   padding: 1rem;
 }

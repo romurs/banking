@@ -42,7 +42,7 @@ const props = defineProps<{
   gap: 1rem;
   align-items: center;
   padding: 0.5rem 0;
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid var(--color-app-bg);
 }
 .acc_label {
   flex: 1;
@@ -51,6 +51,6 @@ const props = defineProps<{
   font-weight: 700;
 }
 .acc_net {
-  color: rgba(38, 38, 38, 0.6);
+  color: var(--color-text-muted);
 }
 </style>

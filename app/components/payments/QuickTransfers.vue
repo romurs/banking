@@ -81,13 +81,13 @@ const selectRecipient = (recipient: RecentRecipient) => {
 
 <style scoped lang="scss">
 .quick_transfers {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   padding: 1.5rem;
 }
 
 h2 {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.2;
@@ -108,9 +108,9 @@ h2 {
 
 .quick_item {
   align-items: center;
-  background: transparent;
+  background: var(--color-transparent);
   border: none;
-  color: #262626;
+  color: var(--color-text);
   cursor: pointer;
   display: flex;
   flex: 0 0 86px;
@@ -143,26 +143,26 @@ h2 {
 }
 
 .new_icon {
-  background: #0b8523;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-surface);
   font-size: 2rem;
   font-weight: 500;
 }
 
 .avatar {
-  background: #f1f1f1;
-  color: rgba(38, 38, 38, 0.58);
+  background: var(--color-app-bg);
+  color: var(--color-text-muted);
   font-size: 1.35rem;
   font-weight: 700;
 }
 
 .bank_mark {
   align-items: center;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 50%;
   bottom: -2px;
-  box-shadow: 0 2px 6px rgba(38, 38, 38, 0.14);
-  color: #262626;
+  box-shadow: var(--shadow-floating);
+  color: var(--color-text);
   display: flex;
   font-size: 0.65rem;
   height: 20px;
@@ -174,7 +174,7 @@ h2 {
 
 .quick_item span:last-child,
 .recipient_name {
-  color: #262626;
+  color: var(--color-text);
   display: block;
   font-size: 0.95rem;
   font-weight: 500;
@@ -187,9 +187,9 @@ h2 {
 
 .quick_placeholder {
   align-items: center;
-  background: #f7f7f7;
+  background: var(--color-surface-soft);
   border-radius: 16px;
-  color: rgba(38, 38, 38, 0.58);
+  color: var(--color-text-muted);
   display: flex;
   flex: 1 0 180px;
   font-size: 0.9rem;

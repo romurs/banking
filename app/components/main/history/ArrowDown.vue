@@ -25,8 +25,8 @@
 
 <style scoped lang="scss">
 .icon_arrow_down {
-  background: #e0ffe9;
-  color: #0b8523;
+  background: var(--color-success-soft);
+  color: var(--color-primary);
   align-items: center;
   border-radius: 50%;
   display: flex;

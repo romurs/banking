@@ -66,9 +66,9 @@ const hendleCreateNewDebitCard = async () => {
   display: flex;
   padding: 2rem;
   gap: 2rem;
-  background-color: #fff;
+  background-color: var(--color-surface);
   border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 
 @media (max-width: 1200px) {
@@ -84,7 +84,7 @@ const hendleCreateNewDebitCard = async () => {
 .desc {
   h2,
   p {
-    color: rgb(51, 51, 51);
+    color: var(--color-text);
   }
 }
 
@@ -101,10 +101,10 @@ const hendleCreateNewDebitCard = async () => {
   width: 100%;
   max-width: 260px;
   aspect-ratio: 1.6 / 1;
-  background-color: #f1f1f1;
+  background-color: var(--color-app-bg);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-media);
 }
 
 .card-container :deep(img) {
@@ -130,8 +130,8 @@ const hendleCreateNewDebitCard = async () => {
   border-radius: 16px;
   cursor: pointer;
   border: none;
-  background-color: #148f2b;
-  color: #fff;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
   font-weight: 600;
   padding: 1rem;
   transition: opacity 0.15s ease;
@@ -142,11 +142,11 @@ const hendleCreateNewDebitCard = async () => {
 }
 
 .error_message {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-size: 14px;
   margin-top: 1rem;
   padding: 12px;
-  background-color: rgba(211, 47, 47, 0.1);
+  background-color: var(--color-danger-focus);
   border-radius: 8px;
   text-align: center;
 }

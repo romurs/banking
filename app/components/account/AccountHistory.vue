@@ -29,14 +29,14 @@ defineProps<{
 
 <style scoped lang="scss">
 .account_history {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   overflow: hidden;
   padding: 1.25rem 0 0.5rem;
 }
 
 h2 {
-  color: #262626;
+  color: var(--color-text);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -50,7 +50,7 @@ h2 {
 }
 
 .empty_text {
-  color: rgba(38, 38, 38, 0.56);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   padding: 0.75rem 1.5rem 1rem;
 }

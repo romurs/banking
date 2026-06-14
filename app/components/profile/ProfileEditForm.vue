@@ -130,7 +130,7 @@ const handleSubmit = () => {
 
 <style scoped lang="scss">
 .profile_form {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -140,7 +140,7 @@ const handleSubmit = () => {
 
 .form_head {
   h1 {
-    color: #262626;
+    color: var(--color-text);
     font-size: 1.65rem;
     font-weight: 700;
     line-height: 1.15;
@@ -154,16 +154,16 @@ const handleSubmit = () => {
   gap: 0.45rem;
 
   span {
-    color: rgba(38, 38, 38, 0.58);
+    color: var(--color-text-muted);
     font-size: 0.86rem;
     font-weight: 700;
   }
 
   input {
-    background: #f7f9f7;
-    border: 1px solid rgba(38, 38, 38, 0.08);
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border);
     border-radius: 14px;
-    color: #262626;
+    color: var(--color-text);
     font-family: "Ubuntu", sans-serif;
     font-size: 1rem;
     min-height: 52px;
@@ -174,19 +174,19 @@ const handleSubmit = () => {
       box-shadow 0.15s ease;
 
     &:focus {
-      border-color: #0b8523;
-      box-shadow: 0 0 0 3px rgba(11, 133, 35, 0.12);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px var(--color-primary-focus);
     }
 
     &.invalid {
-      border-color: #d32f2f;
-      box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+      border-color: var(--color-danger);
+      box-shadow: 0 0 0 3px var(--color-danger-focus);
     }
   }
 }
 
 .field_error {
-  color: #d32f2f !important;
+  color: var(--color-danger) !important;
   font-size: 0.82rem !important;
   font-weight: 700;
 }
@@ -200,8 +200,8 @@ const handleSubmit = () => {
 }
 
 .form_message-error {
-  background: #fff5f6;
-  color: #d32f2f;
+  background: var(--color-danger-soft);
+  color: var(--color-danger);
 }
 
 .form_actions {
@@ -226,11 +226,11 @@ const handleSubmit = () => {
 }
 
 .submit_button {
-  background: #0b8523;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-surface);
 
   &:not(:disabled):hover {
-    background: #21a038;
+    background: var(--color-primary-hover);
   }
 
   &:disabled {
@@ -240,12 +240,12 @@ const handleSubmit = () => {
 }
 
 .cancel_button {
-  background: #f7f9f7;
-  color: #262626;
+  background: var(--color-surface-soft);
+  color: var(--color-text);
 
   &:hover {
-    box-shadow: inset 0 0 0 1px rgba(11, 133, 35, 0.22);
-    color: #0b8523;
+    box-shadow: inset 0 0 0 1px var(--color-primary-border);
+    color: var(--color-primary);
   }
 }
 

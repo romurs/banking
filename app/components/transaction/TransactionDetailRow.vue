@@ -20,18 +20,18 @@ defineProps<{
   padding: 1rem 0;
 
   & + & {
-    border-top: 1px solid rgba(38, 38, 38, 0.08);
+    border-top: 1px solid var(--color-border);
   }
 }
 
 .detail_label {
-  color: rgba(38, 38, 38, 0.56);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   line-height: 1.35;
 }
 
 .detail_value {
-  color: #262626;
+  color: var(--color-text);
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.35;

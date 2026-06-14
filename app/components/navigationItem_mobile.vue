@@ -33,7 +33,7 @@ nav {
   nav {
     width: 100%;
     min-height: 4rem;
-    background-color: #fff;
+    background-color: var(--color-surface);
 
     position: fixed;
     bottom: 0;

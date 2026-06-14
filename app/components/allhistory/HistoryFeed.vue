@@ -87,7 +87,7 @@ const formatMoney = (amount: number) => {
 
 .state_panel {
   align-items: center;
-  color: rgba(38, 38, 38, 0.58);
+  color: var(--color-text-muted);
   display: flex;
   font-size: 1rem;
   justify-content: center;
@@ -97,13 +97,13 @@ const formatMoney = (amount: number) => {
 }
 
 .error_state {
-  color: #d32f2f;
+  color: var(--color-danger);
   font-weight: 600;
 }
 
 .date_group {
   padding: 1rem 0;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20px;
   margin-top: 0.8rem;
   margin-right: 5px;
@@ -118,7 +118,7 @@ const formatMoney = (amount: number) => {
 }
 
 .date_header p {
-  color: #000;
+  color: var(--color-text-strong);
   font-size: 1rem;
   font-weight: 700;
   margin: 0;

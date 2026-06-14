@@ -83,14 +83,14 @@ watch(creditLimit, (v) => emit("update:limit", v));
 
   .limit-title {
     font-weight: 600;
-    color: #333;
+    color: var(--color-text);
   }
 
   .limit-value-input {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #148f2b;
-    background: transparent;
+    color: var(--color-primary);
+    background: var(--color-transparent);
     border: none;
     text-align: right;
     width: 180px;
@@ -100,8 +100,8 @@ watch(creditLimit, (v) => emit("update:limit", v));
 
     &:focus {
       outline: none;
-      background: #f8fff9;
-      box-shadow: 0 0 0 3px rgba(20, 143, 43, 0.15);
+      background: var(--color-primary-soft);
+      box-shadow: 0 0 0 3px var(--color-primary-focus);
     }
   }
 }
@@ -118,8 +118,8 @@ watch(creditLimit, (v) => emit("update:limit", v));
 .preset-btn {
   padding: 5px 8px;
   font-size: 0.8rem;
-  border: 2px solid #e5e5e5;
-  background: white;
+  border: 2px solid var(--color-border-strong);
+  background: var(--color-surface);
   border-radius: 10px;
   font-weight: 500;
   cursor: pointer;
@@ -127,14 +127,14 @@ watch(creditLimit, (v) => emit("update:limit", v));
   white-space: nowrap;
 
   &:hover {
-    border-color: #148f2b;
-    color: #148f2b;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
   }
 
   &.active {
-    background: #148f2b;
-    color: white;
-    border-color: #148f2b;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    border-color: var(--color-primary);
   }
 }
 
@@ -143,7 +143,7 @@ watch(creditLimit, (v) => emit("update:limit", v));
   height: 6px;
   appearance: none;
   -webkit-appearance: none;
-  background: #e5e5e5;
+  background: var(--color-border-strong);
   border-radius: 9999px;
   outline: none;
   cursor: pointer;
@@ -153,22 +153,22 @@ watch(creditLimit, (v) => emit("update:limit", v));
     -webkit-appearance: none;
     width: 24px;
     height: 24px;
-    background: #148f2b;
+    background: var(--color-primary);
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(20, 143, 43, 0.3);
+    box-shadow: 0 4px 12px var(--color-primary-shadow);
     cursor: pointer;
-    border: 3px solid white;
+    border: 3px solid var(--color-surface);
   }
 
   &::-moz-range-thumb {
     appearance: none;
     width: 24px;
     height: 24px;
-    background: #148f2b;
+    background: var(--color-primary);
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(20, 143, 43, 0.3);
+    box-shadow: 0 4px 12px var(--color-primary-shadow);
     cursor: pointer;
-    border: 3px solid white;
+    border: 3px solid var(--color-surface);
   }
 }
 
@@ -177,6 +177,6 @@ watch(creditLimit, (v) => emit("update:limit", v));
   justify-content: space-between;
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: #888;
+  color: var(--color-text-soft);
 }
 </style>

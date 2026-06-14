@@ -78,7 +78,7 @@ const financeStore = useFinanceStore();
 
 <style scoped lang="scss">
 .account {
-  background-color: #fff;
+  background-color: var(--color-surface);
   height: 7.5rem;
   width: 7.5rem;
   border-radius: 16px;

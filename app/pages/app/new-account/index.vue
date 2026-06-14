@@ -55,9 +55,9 @@ useHead({
 <style scoped lang="scss">
 .newAccount {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--color-surface);
   border-radius: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-soft);
 }
 
 .wrapper {
